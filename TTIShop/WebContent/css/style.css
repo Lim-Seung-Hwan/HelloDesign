@@ -1009,7 +1009,7 @@ ol {
 	position: absolute;
 	right: -14px;
 	top: 0;
-	content: "�꼨";
+	content: "";
 	font-family: "FontAwesome";
 }
 
@@ -1381,7 +1381,7 @@ ol {
 
 .categories__accordion .card-heading a:after,
 .categories__accordion .card-heading>a.active[aria-expanded=false]:after {
-	content: "�꼪";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -1391,7 +1391,7 @@ ol {
 }
 
 .categories__accordion .card-heading.active a:after {
-	content: "�꼩";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -1402,7 +1402,7 @@ ol {
 
 .categories__accordion .card-heading a[aria-expanded=true]:after,
 .categories__accordion .card-heading>a.active:after {
-	content: "�꼩";
+	content: "";
 	font-size: 14px;
 	font-family: "FontAwesome";
 	color: #666666;
@@ -2362,7 +2362,6 @@ ol {
 	color: #666666;
 	appearance:none;
 }
-
 .checkout__form .checkout__form__input input::-webkit-input-placeholder {
 	color: #666666;
 }
