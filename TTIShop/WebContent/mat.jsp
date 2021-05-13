@@ -154,8 +154,7 @@ ArrayList<goodsDTO> mat_list = matdao.select_eco();
                             </div>
                             <div class="size__list color__list">
                             
-                            <%if(info !=null) {%>
-                            	<%if(info.getTag().equals("spring")|| info.getTag().equals("summer")||info.getTag().equals("fall")||info.getTag().equals("winter")) {%>
+                           
                                 <label for="spring">
                                     spring
                                     <input type="checkbox" id="spring">
@@ -176,8 +175,6 @@ ArrayList<goodsDTO> mat_list = matdao.select_eco();
                                     <input type="checkbox" id="winter">
                                     <span class="checkmark"></span>
                                 </label>
-                                <%} %>
-                             <%} %>
                              
                             </div>
                         </div>
