@@ -30,12 +30,23 @@
 
 <body>
 <%
+	goodsDTO info = (goodsDTO)session.getAttribute("info");
+
 	goodsDAO matdao = new goodsDAO();
-	ArrayList<goodsDTO> mat_list = matdao.select_mat();
-	if(mat_list != null) {
-		System.out.println(mat_list.get(0).getName());
+	ArrayList<goodsDTO> mat_list = null;
+	
+	if(info != null) {	
+		mat_list = matdao.select_mat(info.getTag());
 	}
+	
 %>
+
+<%-- <%
+goodsDAO matdao = new goodsDAO();
+ArrayList<goodsDTO> mat_list = matdao.select_eco();
+
+%> --%>
+
 <div id="preloder">
         <div class="loader"></div>
     </div>
@@ -142,6 +153,9 @@
                                 <h4>pattern</h4>
                             </div>
                             <div class="size__list color__list">
+                            
+                            <%if(info !=null) {%>
+                            	<%if(info.getTag().equals("spring")|| info.getTag().equals("summer")||info.getTag().equals("fall")||info.getTag().equals("winter")) {%>
                                 <label for="spring">
                                     spring
                                     <input type="checkbox" id="spring">
@@ -162,6 +176,9 @@
                                     <input type="checkbox" id="winter">
                                     <span class="checkmark"></span>
                                 </label>
+                                <%} %>
+                             <%} %>
+                             
                             </div>
                         </div>
                     </div>
@@ -186,6 +203,7 @@
 	                            </div>
 	                        </div>
                         <%}%>
+                        
                         <div class="col-lg-12 text-center">
                             <div class="pagination__option">
                                 <a href="#">1</a>
