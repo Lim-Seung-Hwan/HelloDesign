@@ -19,6 +19,17 @@ public class goodsDTO {
 		this.img_path = img_path;
 		this.tag = tag;
 	}
+	
+	//돗자리, 에코백, 앞치마, 의자 가져올 때 사용함
+	public goodsDTO(int num, int price, String name, String img_path, String tag, String category) {
+		super();
+		this.num = num;
+		this.price = price;
+		this.name = name;
+		this.img_path = img_path;
+		this.tag = tag;
+		this.category = category;
+	}
 
 	public goodsDTO(int num, int price, String name, String info, String img_path, String tag, String category) {
 		super();

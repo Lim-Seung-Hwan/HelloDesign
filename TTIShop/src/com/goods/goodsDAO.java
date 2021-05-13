@@ -14,6 +14,7 @@ public class goodsDAO {
 	int cnt = 0;
 	goodsDTO info = null;
 
+
 	public void conn() { // DB 연결
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -153,4 +154,63 @@ public class goodsDAO {
 		return list;
 		
 	}
+	
+	/*
+	 * public ArrayList<goodsDTO> select() { // 상품목록 표시 conn(); ArrayList<goodsDTO>
+	 * list = new ArrayList<goodsDTO>();; try { String sql =
+	 * "SELECT g_price, g_name, g_img_path, g_info, g_tag FROM shop_goods"; psmt =
+	 * conn.prepareStatement(sql); rs = psmt.executeQuery();
+	 * 
+	 * while (rs.next()) { int price = rs.getInt(1); String name = rs.getString(2);
+	 * String img_path = rs.getString(3); String g_info = rs.getString(4); String
+	 * tag = rs.getString(5);
+	 * 
+	 * info = new goodsDTO(price, name, g_info, img_path, tag);
+	 * 
+	 * list.add(info); } } catch (SQLException e) { // TODO Auto-generated catch
+	 * block e.printStackTrace(); } finally { close(); }
+	 * 
+	 * return list;
+	 * 
+	 * }
+	 */
+	
+	//돗자리 정보 가져오기
+	public ArrayList<goodsDTO> select_mat() {
+		
+		conn();
+		
+		ArrayList<goodsDTO> mat_list = new ArrayList<goodsDTO>();
+		
+		try {
+			
+			String sql="SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='mat'"; 
+			psmt=conn.prepareStatement(sql);
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				int num=rs.getInt(1);
+				int price=rs.getInt(2);
+				String name=rs.getString(3);
+				String img_path=rs.getString(4);
+				String tag=rs.getString(5);
+				
+				info = new goodsDTO(num, price, name, img_path, tag, "mat");
+				 
+				mat_list.add(info);
+				System.out.println(info);
+			}
+		
+		
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return mat_list;
+	}
+	
+	
 }
