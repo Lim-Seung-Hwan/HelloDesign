@@ -46,7 +46,7 @@ public class goodsDAO {
 	public int insert(goodsDTO gdto) { // 상품 등록
 		conn();
 		try {
-			String sql = "INSERT INTO shop_goods VALUES(EX_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, ?, ?, ?, ?, ?, ?)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, gdto.getPrice());
