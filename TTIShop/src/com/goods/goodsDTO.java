@@ -8,6 +8,18 @@ public class goodsDTO {
 	private String img_path;
 	private String tag;
 	private String category;
+	
+	
+	
+	public goodsDTO(int price, String name, String info, String img_path, String tag) {
+		super();
+		this.price = price;
+		this.name = name;
+		this.info = info;
+		this.img_path = img_path;
+		this.tag = tag;
+	}
+
 	public goodsDTO(int num, int price, String name, String info, String img_path, String tag, String category) {
 		super();
 		this.num = num;
@@ -18,6 +30,7 @@ public class goodsDTO {
 		this.tag = tag;
 		this.category = category;
 	}
+	
 	public int getNum() {
 		return num;
 	}
