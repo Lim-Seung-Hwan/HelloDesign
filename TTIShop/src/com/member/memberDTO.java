@@ -13,7 +13,7 @@ public class memberDTO {
 		this.id = id;
 		this.pw = pw;
 	}
-
+	
 	public memberDTO(int num, String id, String name, String address, String phone) {
 		super();
 		this.num = num;
