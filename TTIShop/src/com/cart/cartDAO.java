@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.goods.goodsDTO;
 
 public class cartDAO {
 	Connection conn = null;
@@ -63,6 +62,25 @@ public class cartDAO {
 		return cnt;
 
 	}
+	
+	public int delete(cartDTO dto) { // 상품 등록
+		conn();
+		try {
+			String sql = "DELETE FROM shop_cart WHERE m_num=? AND g_num=?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getM_num());
+			psmt.setInt(2, dto.getG_num());
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+
+	}
 
 
 	
@@ -74,7 +92,7 @@ public class cartDAO {
 
 		try {
 
-			String sql = "select g.g_name, g.g_price from shop_goods g, shop_member m, shop_cart c where c.m_num=m.m_num and c.g_num=g.g_num and m.m_num=?";
+			String sql = "SELECT g.g_name, g.g_price FROM shop_goods g, shop_member m, shop_cart c WHERE c.m_num=m.m_num AND c.g_num=g.g_num AND m.m_num=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
 			rs = psmt.executeQuery();
