@@ -8,6 +8,17 @@ public class memberDTO {
 	private String address;
 	private String phone;
 	
+	
+	
+	public memberDTO(String id, String pw, String name, String address, String phone) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+	}
+
 	public memberDTO(String id, String pw) {
 		super();
 		this.id = id;
