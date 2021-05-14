@@ -32,16 +32,10 @@
 <%
 	goodsDTO info = (goodsDTO)session.getAttribute("info");
 
-	goodsDAO matdao = new goodsDAO();
-	ArrayList<goodsDTO> mat_list =  matdao.select_mat(info.getTag());
+	goodsDAO aprondao = new goodsDAO();
+	ArrayList<goodsDTO> apron_list = aprondao.select_apron(info.getTag());
+	
 %>
-
-<%-- <%
-goodsDAO matdao = new goodsDAO();
-ArrayList<goodsDTO> mat_list = matdao.select_eco();
-
-%> --%>
-
 <div id="preloder">
         <div class="loader"></div>
     </div>
@@ -129,7 +123,7 @@ ArrayList<goodsDTO> mat_list = matdao.select_eco();
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>돗자리</span>
+                        <span>앞치마</span>
                     </div>
                 </div>
             </div>
@@ -148,8 +142,6 @@ ArrayList<goodsDTO> mat_list = matdao.select_eco();
                                 <h4>pattern</h4>
                             </div>
                             <div class="size__list color__list">
-                            
-                           
                                 <label for="spring">
                                     spring
                                     <input type="checkbox" id="spring">
@@ -170,17 +162,16 @@ ArrayList<goodsDTO> mat_list = matdao.select_eco();
                                     <input type="checkbox" id="winter">
                                     <span class="checkmark"></span>
                                 </label>
-                             
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="row">
-                    	<%for (int i=0; i<mat_list.size(); i++){%>
+                    	<%for (int i=0; i<apron_list.size(); i++){%>
 	                        <div class="col-lg-4 col-md-6">
 	                            <div class="product__item">
-	                                <div class="product__item__pic set-bg" data-setbg="<%=mat_list.get(i).getImg_path() %>" onClick="location.href='./product-details.html'">
+	                                <div class="product__item__pic set-bg" data-setbg="<%=apron_list.get(i).getImg_path() %>" onClick="location.href='./product-details.html'">
 	                                   <!--  <div class="label new">New</div> -->
 	                                    <%-- <ul class="product__hover">
 	                                        <li><a href="<%=mat_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -189,8 +180,8 @@ ArrayList<goodsDTO> mat_list = matdao.select_eco();
 	                                    </ul> --%>
 	                                </div>
 	                                <div class="product__item__text">
-	                                    <h6><a href="./product-details.html"><%= mat_list.get(i).getName() %></a></h6>
-	                                    <div class="product__price"><%= mat_list.get(i).getPrice() %></div>
+	                                    <h6><a href="./product-details.html"><%= apron_list.get(i).getName() %></a></h6>
+	                                    <div class="product__price"><%= apron_list.get(i).getPrice() %></div>
 	                                </div>
 	                            </div>
 	                        </div>

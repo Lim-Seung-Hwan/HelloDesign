@@ -10,17 +10,7 @@ public class goodsDTO {
 	private String category;
 	
 	
-	
-	public goodsDTO(int price, String name, String info, String img_path, String tag) {
-		super();
-		this.price = price;
-		this.name = name;
-		this.info = info;
-		this.img_path = img_path;
-		this.tag = tag;
-	}
-	
-	//돗자리, 에코백, 앞치마, 의자 가져올 때 사용함
+	//상품 목폭 표시 (테그 포함)
 	public goodsDTO(int num, int price, String name, String img_path, String tag, String category) {
 		super();
 		this.num = num;
@@ -31,6 +21,7 @@ public class goodsDTO {
 		this.category = category;
 	}
 
+	//상품 상세 정보
 	public goodsDTO(int num, int price, String name, String info, String img_path, String tag, String category) {
 		super();
 		this.num = num;
