@@ -273,8 +273,8 @@ public class goodsDAO {
 
 		return chair_list;
 	}
-	// 의자 정보 가져오기
-	public ArrayList<goodsDTO> select_chair(String i_tag) {
+	// 의자 정보 가져오기(테그)
+	public ArrayList<goodsDTO> pattern_chair(String i_tag) {
 
 		conn();
 

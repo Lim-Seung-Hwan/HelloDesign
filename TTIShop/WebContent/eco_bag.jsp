@@ -58,8 +58,8 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="./Login.html">로그인</a>
-            <a href="./Register.html">회원가입</a>
+            <a href="./Login.html">Login</a>
+            <a href="./Register.html">Join</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -76,13 +76,13 @@
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">홈</a></li>
-                            <li><a href="./mat.html">돗자리</a></li>
-                            <li><a href="./eco_bag.html">에코백</a></li>
-                            <li><a href="./apron.html">앞치마</a></li>
-                            <li><a href="./chair.html">의자</a></li>
+                            <li><a href="./index.html">HOME</a></li>
+                            <li><a href="./mat.html">MAT</a></li>
+                            <li class="active"><a href="./eco_bag.html">ECO-BAG</a></li>
+                            <li ><a href="./apron.html">APRON</a></li>
+                            <li><a href="./chair.html">CHAIR</a></li>
                             <li><a href="./product-details.html">주문제작</a></li>
-                            <li><a href="#">마이페이지</a>
+                            <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
                                     <li><a href="./shop-cart.html">Shop Cart</a></li>
                                     <li><a href="./checkout.html">Checkout</a></li>
@@ -94,8 +94,8 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="./Login.html">로그인</a>
-                            <a href="./Register.html">회원가입</a>
+                            <a href="./Login.html">Login</a>
+                            <a href="./Register.html">Join</a>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
@@ -205,12 +205,7 @@
     <!-- Shop Section End -->
 
     <!-- Footer Section Begin -->
-	<footer class="footer" style="padding-bottom: 50px;">
-    
-    <div class="row"></div>
 	
-	</footer>
-   
 	<!-- Footer Section End -->
 	
 	
