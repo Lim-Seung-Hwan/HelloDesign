@@ -1,3 +1,4 @@
+<%@page import="com.member.memberDTO"%>
 <%@page import="com.cart.cartDTO"%>
 <%@page import="com.cart.cartDAO"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -65,8 +66,8 @@
 	goodsDTO info = (goodsDTO)session.getAttribute("info"); */
 
 	cartDAO cartdao = new cartDAO();
-	ArrayList<cartDTO> cart_list = cartdao.select_cart(1);
-
+	memberDTO info=(memberDTO)session.getAttribute("info");
+	ArrayList<cartDTO> cart_list = cartdao.select_cart(info.getNum());
 	
 %>
     <!-- Page Preloder -->
@@ -92,8 +93,13 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="./login.html">Login</a>
-            <a href="./join.html">Join</a>
+           <%if(info !=null) { %>
+             <a href="./update.jsp">회원정보변경</a>
+             <a href="./LogoutService">Logout</a>
+             <%}else{%>
+             <a href="./login.jsp">Login</a>
+             <a href="./join.jsp">Join</a>
+             <%} %> 
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -128,8 +134,13 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="./login.html">Login</a>
-            				<a href="./join.html">Join</a>
+                        <%if(info !=null) { %>
+                        	<a href="./update.jsp">회원정보변경</a>
+                            <a href="./LogoutService">Logout</a>
+                        	<%}else{%>
+                            <a href="./login.jsp">Login</a>
+             				<a href="./join.jsp">Join</a>
+                            <%} %>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
