@@ -7,7 +7,34 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ashion | Template</title>
+    <title>Hello | Design</title>
+    
+     <script language="javascript">
+  	function showPopup() {
+		var chkbox = document.checkout__form.check_order.checked;
+		if(chkbox){
+			var namecheck = document.checkout__form.name.value == "";
+			var addrcheck = document.checkout__form.name.value == "";
+			var detailaddrcheck = document.checkout__form.name.value == "";
+			var phonecheck = document.checkout__form.name.value == "";
+			if(!namecheck && !addrcheck && !detailaddrcheck && !phonecheck) {
+				document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent(document.checkout__form.name.value);
+				document.cookie = encodeURIComponent("area") + "=" + encodeURIComponent(document.checkout__form.area.value);
+				document.cookie = encodeURIComponent("addr") + "=" + encodeURIComponent(document.checkout__form.addr.value);
+				document.cookie = encodeURIComponent("detail_addr") + "=" + encodeURIComponent(document.checkout__form.detail_addr.value);
+				document.cookie = encodeURIComponent("phone") + "=" + encodeURIComponent(document.checkout__form.phone.value);
+		  		window.open("receipt.html", "전자결제 신용카드 ", "width=400, height=500, left=100, top=50");
+			}
+			else {
+				alert ('모든 양식을 기록해주세요');
+			}
+		} else if(!chkbox) {
+			alert("주문 내역을 확인해주세요.");
+		}
+  		
+  		
+  		}
+ 	 </script>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
@@ -17,7 +44,7 @@
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-ic\ons.css" type="text/css">
     <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
@@ -26,6 +53,7 @@
 </head>
 
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -72,7 +100,6 @@
                             <li><a href="./eco_bag.html">에코백</a></li>
                             <li><a href="./apron.html">앞치마</a></li>
                             <li><a href="./chair.html">의자</a></li>
-                            <li><a href="./product-details.html">주문제작</a></li>
                             <li class="active"><a href="#">마이페이지</a>
                             <ul class="dropdown">
                                     <li><a href="./shop-cart.html">Shop Cart</a></li>
@@ -131,7 +158,7 @@
                     here to enter your code.</h6>
                 </div>
             </div> -->
-            <form action="#" class="checkout__form">
+            <form action="#" class="checkout__form" name="checkout__form">
                 <div class="row">
                     <div class="col-lg-8">
                         <h5>주문하기</h5>
@@ -201,11 +228,11 @@
                                 <div class="checkout__order__widget">
                                     <label for="check-payment">
                                         주문 내역을 확인하였습니다.
-                                        <input type="checkbox" id="check-payment">
+                                        <input type="checkbox" id="check-payment" name="check_order">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <button type="submit" class="site-btn">주문하기</button>
+                                <button type="button" class="site-btn" onclick="showPopup();" />주문하기</button>
                             </div>
                         </div>
                     </div>
