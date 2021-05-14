@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
@@ -13,29 +14,45 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Ashion | Template</title>
 
-<script language="javascript">
-  	function showPopup() {
-		var chkbox = document.checkout__form.check_order.checked;
-		if(chkbox){
-			var namecheck = document.checkout__form.name.value == "";
-			var addrcheck = document.checkout__form.name.value == "";
-			var detailaddrcheck = document.checkout__form.name.value == "";
-			var phonecheck = document.checkout__form.name.value == "";
-			if(!namecheck && !addrcheck && !detailaddrcheck && !phonecheck) {
-				document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent(document.checkout__form.name.value);
-				document.cookie = encodeURIComponent("area") + "=" + encodeURIComponent(document.checkout__form.area.value);
-				document.cookie = encodeURIComponent("addr") + "=" + encodeURIComponent(document.checkout__form.addr.value);
-				document.cookie = encodeURIComponent("detail_addr") + "=" + encodeURIComponent(document.checkout__form.detail_addr.value);
-				document.cookie = encodeURIComponent("phone") + "=" + encodeURIComponent(document.checkout__form.phone.value);
-		  		window.open("receipt.html", "전자결제 신용카드 ", "width=400, height=500, left=100, top=50");
-			}
-			else {
-				alert ('모든 양식을 기록해주세요');
-			}
-		} else if(!chkbox) {
-			alert("주문 내역을 확인해주세요.");
+<script type="text/javascript">
+	window.onload = function(){
+		var tag = readCookie("tag");
+		autocheck(tag);
+	}
+	function autocheck(pos) {
+		if(pos == 'spring') { 
+			document.getElementById('spring').checked = true;
+			
 		}
-  		}
+		if(pos == 'summer') {
+			document.getElementById('summer').checked = true;
+		}
+		if(pos == 'fall') {
+			document.getElementById('fall').checked = true;
+		}
+		if(pos == 'winter') {
+			document.getElementById('winter').checked = true;
+		}
+	}
+  	function checkboxClick(tag) {
+		document.getElementById('spring').checked = false;
+		document.getElementById('summer').checked = false;
+		document.getElementById('fall').checked = false;
+		document.getElementById('winter').checked = false;
+		autocheck(tag);
+		document.cookie = encodeURIComponent("tag") + "=" + encodeURIComponent(tag);
+		location.reload();
+  	}
+  	function readCookie(name) {
+  	    var nameEQ = name + "=";
+  	    var ca = document.cookie.split(';');
+  	    for(var i=0;i < ca.length;i++) {
+  	        var c = ca[i];
+  	        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+  	        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  	    }
+  	    return null;
+  	}
 	</script>
 
 <!-- Google Font -->
@@ -61,13 +78,31 @@
 	<%
 	/* session.setAttribute("info","");
 	goodsDTO info = (goodsDTO)session.getAttribute("info"); */
-
-	goodsDAO chairdao = new goodsDAO();
-	ArrayList<goodsDTO> chair_list = chairdao.select_chair();
+	
 	
 %>
-
-	<
+<%
+	ArrayList<goodsDTO> chair_list = null;
+	Cookie[] cookies = request.getCookies();
+	String tag = null;
+	if(cookies != null && cookies.length > 0)
+	{
+		for(int i = 0; i < cookies.length; i++)
+		{
+			if(cookies[i].getName().equals("tag")) {
+				tag = URLDecoder.decode(cookies[i].getValue(), "utf-8");
+			}
+		}
+	}
+	
+	if (tag != null) {
+		goodsDAO chairdao = new goodsDAO();
+		chair_list = chairdao.pattern_chair(tag);
+	} else {
+		goodsDAO chairdao = new goodsDAO();
+		chair_list = chairdao.select_chair();
+	}
+%>
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
@@ -166,13 +201,13 @@
 								<h4>pattern</h4>
 							</div>
 							<div class="size__list color__list">
-								<label for="spring"> spring <input type="checkbox"
+								<label for="spring" onClick="checkboxClick('spring')"> spring <input type="checkbox"
 									id="spring"> <span class="checkmark"></span>
-								</label> <label for="summer"> summer <input type="checkbox"
+								</label> <label for="summer" onClick="checkboxClick('summer')"> summer <input type="checkbox"
 									id="summer"> <span class="checkmark"></span>
-								</label> <label for="fall"> fall <input type="checkbox"
+								</label> <label for="fall" onClick="checkboxClick('fall')"> fall <input type="checkbox"
 									id="fall"> <span class="checkmark"></span>
-								</label> <label for="winter"> winter <input type="checkbox"
+								</label> <label for="winter" onClick="checkboxClick('winter')"> winter <input type="checkbox"
 									id="winter"> <span class="checkmark"></span>
 								</label>
 							</div>
