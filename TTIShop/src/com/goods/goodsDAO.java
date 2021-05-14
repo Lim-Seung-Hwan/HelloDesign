@@ -126,7 +126,7 @@ public class goodsDAO {
 	
 	/*상품 목록 표시*/
 	//돗자리 정보 가져오기
-	public ArrayList<goodsDTO> select_mat(String i_tag) {
+	public ArrayList<goodsDTO> select_mat() {
 
 		conn();
 
@@ -134,9 +134,8 @@ public class goodsDAO {
 
 		try {
 
-			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='mat' AND g_tag=?";
+			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='mat'";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, i_tag);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -161,10 +160,83 @@ public class goodsDAO {
 
 		return mat_list;
 	}
-
 	
+	//돗자리 정보 가져오기(태그)
+		public ArrayList<goodsDTO> pattern_mat(String i_tag) {
+
+			conn();
+
+			ArrayList<goodsDTO> mat_list = new ArrayList<goodsDTO>();
+
+			try {
+
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='mat' AND g_tag=?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, i_tag);
+				rs = psmt.executeQuery();
+
+				while (rs.next()) {
+					int num = rs.getInt(1);
+					int price = rs.getInt(2);
+					String name = rs.getString(3);
+					String img_path = rs.getString(4);
+					String tag = rs.getString(5);
+
+					info = new goodsDTO(num, price, name, img_path, tag, "mat");
+
+					mat_list.add(info);
+					System.out.println(info);
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+
+			return mat_list;
+		}
+
+
 	// 에코백 정보 가져오기
-		public ArrayList<goodsDTO> select_eco(String i_tag) {
+	public ArrayList<goodsDTO> select_eco() {
+
+		conn();
+
+		ArrayList<goodsDTO> eco_list = new ArrayList<goodsDTO>();
+
+		try {
+
+			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='eco'";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				int num = rs.getInt(1);
+				int price = rs.getInt(2);
+				String name = rs.getString(3);
+				String img_path = rs.getString(4);
+				String tag = rs.getString(5);
+
+				info = new goodsDTO(num, price, name, img_path, tag, "eco");
+
+				eco_list.add(info);
+				System.out.println(info);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return eco_list;
+	}
+	
+	// 에코백 정보 가져오기(태그)
+		public ArrayList<goodsDTO> pattern_eco(String i_tag) {
 
 			conn();
 
@@ -202,7 +274,7 @@ public class goodsDAO {
 
 
 	// 앞치마 정보 가져오기
-	public ArrayList<goodsDTO> select_apron(String i_tag) {
+	public ArrayList<goodsDTO> select_apron() {
 
 		conn();
 
@@ -210,9 +282,8 @@ public class goodsDAO {
 
 		try {
 
-			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='apron'AND g_tag=?";
+			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='apron";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, i_tag);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -237,6 +308,43 @@ public class goodsDAO {
 
 		return apron_list;
 	}
+	
+	// 앞치마 정보 가져오기(태그)
+		public ArrayList<goodsDTO> pattern_apron(String i_tag) {
+
+			conn();
+
+			ArrayList<goodsDTO> apron_list = new ArrayList<goodsDTO>();
+
+			try {
+
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='apron'AND g_tag=?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, i_tag);
+				rs = psmt.executeQuery();
+
+				while (rs.next()) {
+					int num = rs.getInt(1);
+					int price = rs.getInt(2);
+					String name = rs.getString(3);
+					String img_path = rs.getString(4);
+					String tag = rs.getString(5);
+
+					info = new goodsDTO(num, price, name, img_path, tag, "apron");
+
+					apron_list.add(info);
+					System.out.println(info);
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+
+			return apron_list;
+		}
 
 	// 의자 정보 가져오기(전부)
 	public ArrayList<goodsDTO> select_chair() {

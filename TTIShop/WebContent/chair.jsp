@@ -15,6 +15,7 @@
 <title>Ashion | Template</title>
 
 <script type="text/javascript">
+/* 공부 필요 */
 	window.onload = function(){
 		var tag = readCookie("tag");
 		autocheck(tag);
@@ -34,6 +35,7 @@
 			document.getElementById('winter').checked = true;
 		}
 	}
+	
   	function checkboxClick(tag) {
 		document.getElementById('spring').checked = false;
 		document.getElementById('summer').checked = false;
@@ -43,6 +45,7 @@
 		document.cookie = encodeURIComponent("tag") + "=" + encodeURIComponent(tag);
 		location.reload();
   	}
+  	
   	function readCookie(name) {
   	    var nameEQ = name + "=";
   	    var ca = document.cookie.split(';');
@@ -75,14 +78,11 @@
 </head>
 
 <body>
-	<%
-	/* session.setAttribute("info","");
-	goodsDTO info = (goodsDTO)session.getAttribute("info"); */
-	
-	
-%>
+
 <%
+	/* arraylist형인 chair_list받아옴. 일단 null */
 	ArrayList<goodsDTO> chair_list = null;
+	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
 	Cookie[] cookies = request.getCookies();
 	String tag = null;
 	if(cookies != null && cookies.length > 0)
@@ -95,10 +95,11 @@
 		}
 	}
 	
-	if (tag != null) {
+	/* tag를 선택 했는지 안했는지 */
+	if (tag != null) {/* tag를 선택 했을 때 - 선택한 테그에 대한 모든 정보 가져옴*/
 		goodsDAO chairdao = new goodsDAO();
 		chair_list = chairdao.pattern_chair(tag);
-	} else {
+	} else { /* tag를 선택 안 했을 때 - 모든 정보 가져옴 */
 		goodsDAO chairdao = new goodsDAO();
 		chair_list = chairdao.select_chair();
 	}
@@ -200,6 +201,7 @@
 							<div class="section-title">
 								<h4>pattern</h4>
 							</div>
+							<!-- 테그마다 클릭할때 실행되는 함수를 지정 -->
 							<div class="size__list color__list">
 								<label for="spring" onClick="checkboxClick('spring')"> spring <input type="checkbox"
 									id="spring"> <span class="checkmark"></span>
@@ -216,18 +218,14 @@
 				</div>
 				<div class="col-lg-9 col-md-9">
 					<div class="row">
+					
+					<!-- 사진, 이름, 가격 보여줌 -->
 						<%for (int i=0; i<chair_list.size(); i++){%>
 						<div class="col-lg-4 col-md-6">
 							<div class="product__item">
 								<div class="product__item__pic set-bg"
 									data-setbg="<%=chair_list.get(i).getImg_path() %>"
 									onClick="location.href='./product-details.html'">
-									<!--  <div class="label new">New</div> -->
-									<%-- <ul class="product__hover">
-	                                        <li><a href="<%=mat_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                                        <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                                        <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                                    </ul> --%>
 								</div>
 								<div class="product__item__text">
 									<h6>
@@ -253,6 +251,15 @@
 	<!-- Shop Section End -->
 
 	<!-- Footer Section Begin -->
+	<div class="row"></div>
+    <div class="row"></div>
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <div class="row"></div>
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <div class="footer__copyright__text">
+                    <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                </div>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 	
 	<!-- Footer Section End -->
 
