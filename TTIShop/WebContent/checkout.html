@@ -10,7 +10,30 @@
     <title>Hello | Design</title>
     
      <script language="javascript">
-  	function showPopup() { window.open("receipt.html", "전자결제 신용카드 ", "width=400, height=500, left=100, top=50"); }
+  	function showPopup() {
+		var chkbox = document.checkout__form.check_order.checked;
+		if(chkbox){
+			var namecheck = document.checkout__form.name.value == "";
+			var addrcheck = document.checkout__form.name.value == "";
+			var detailaddrcheck = document.checkout__form.name.value == "";
+			var phonecheck = document.checkout__form.name.value == "";
+			if(!namecheck && !addrcheck && !detailaddrcheck && !phonecheck) {
+				document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent(document.checkout__form.name.value);
+				document.cookie = encodeURIComponent("area") + "=" + encodeURIComponent(document.checkout__form.area.value);
+				document.cookie = encodeURIComponent("addr") + "=" + encodeURIComponent(document.checkout__form.addr.value);
+				document.cookie = encodeURIComponent("detail_addr") + "=" + encodeURIComponent(document.checkout__form.detail_addr.value);
+				document.cookie = encodeURIComponent("phone") + "=" + encodeURIComponent(document.checkout__form.phone.value);
+		  		window.open("receipt.html", "전자결제 신용카드 ", "width=400, height=500, left=100, top=50");
+			}
+			else {
+				alert ('모든 양식을 기록해주세요');
+			}
+		} else if(!chkbox) {
+			alert("주문 내역을 확인해주세요.");
+		}
+  		
+  		
+  		}
  	 </script>
 
     <!-- Google Font -->
@@ -30,6 +53,7 @@
 </head>
 
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -134,7 +158,7 @@
                     here to enter your code.</h6>
                 </div>
             </div> -->
-            <form action="#" class="checkout__form">
+            <form action="#" class="checkout__form" name="checkout__form">
                 <div class="row">
                     <div class="col-lg-8">
                         <h5>주문하기</h5>
@@ -204,11 +228,11 @@
                                 <div class="checkout__order__widget">
                                     <label for="check-payment">
                                         주문 내역을 확인하였습니다.
-                                        <input type="checkbox" id="check-payment">
+                                        <input type="checkbox" id="check-payment" name="check_order">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <button type="submit" class="site-btn" onclick="showPopup();" />주문하기</button>
+                                <button type="button" class="site-btn" onclick="showPopup();" />주문하기</button>
                             </div>
                         </div>
                     </div>
