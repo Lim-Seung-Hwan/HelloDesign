@@ -1,3 +1,4 @@
+<%@page import="com.member.memberDTO"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
@@ -76,6 +77,8 @@
 <body>
 
 <%
+	memberDTO info = (memberDTO)session.getAttribute("info");
+
 	/* arraylist형인 apron_list받아옴. 일단 null */
 	ArrayList<goodsDTO> mat_list = null;
 	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
@@ -124,8 +127,13 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="./Login.html">Login</a>
-            <a href="./Register.html">Join</a>
+           <%if(info !=null) { %>
+             <a href="./update.jsp">회원정보변경</a>
+             <a href="./LogoutService">Logout</a>
+             <%}else{%>
+             <a href="./login.jsp">Login</a>
+             <a href="./join.jsp">Join</a>
+             <%} %> 
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -143,10 +151,10 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="./index.html">HOME</a></li>
-                            <li class="active" ><a href="./mat.html">MAT</a></li>
-                            <li><a href="./eco_bag.html">ECO-BAG</a></li>
-                            <li ><a href="./apron.html">APRON</a></li>
-                            <li><a href="./chair.html">CHAIR</a></li>
+                            <li class="active" ><a href="./mat.jsp">MAT</a></li>
+                            <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
+                            <li ><a href="./apron.jsp">APRON</a></li>
+                            <li><a href="./chair.jsp">CHAIR</a></li>
                             <li><a href="./product-details.html">주문제작</a></li>
                             <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
@@ -158,10 +166,15 @@
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__right">
+                   <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="./Login.html">Login</a>
-                            <a href="./Register.html">Join</a>
+                        <%if(info !=null) { %>
+                        	<a href="./update.jsp">회원정보변경</a>
+                            <a href="./LogoutService">Logout</a>
+                        	<%}else{%>
+                            <a href="./login.jsp">Login</a>
+             				<a href="./join.jsp">Join</a>
+                            <%} %>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
