@@ -85,16 +85,16 @@
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">HOME</a></li>
-                            <li><a href="./mat.html">MAT</a></li>
-                            <li><a href="./eco_bag.html">ECO-BAG</a></li>
-                            <li><a href="./apron.html">APRON</a></li>
-                            <li><a href="./chair.html">CHAIR</a></li>
+                            <li class="active"><a href="./index.jsp">HOME</a></li>
+                            <li><a href="./mat.jsp">MAT</a></li>
+                            <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
+                            <li><a href="./apron.jsp">APRON</a></li>
+                            <li><a href="./chair.jsp">CHAIR</a></li>
                            <!--  <li><a href="#">주문제작</a></li>  -->
                             <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
                                     <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="./checkout.html">Checkout</a></li>
+                                    <li><a href="./checkout.jsp">Checkout</a></li>
                             </ul>
                             </li>
                         </ul>
