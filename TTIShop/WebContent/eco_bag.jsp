@@ -147,7 +147,11 @@
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
+<<<<<<< HEAD
                        <ul>
+=======
+                        <ul>
+>>>>>>> refs/remotes/origin/master
                             <li><a href="./index.jsp">HOME</a></li>
                             <li><a href="./mat.jsp">MAT</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
@@ -199,7 +203,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
                         <span>에코백</span>
                     </div>
                 </div>
