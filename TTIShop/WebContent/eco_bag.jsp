@@ -19,6 +19,8 @@
 	window.onload = function(){
 		var tag = readCookie("tag");
 		autocheck(tag);
+		document.cookie = 'tag=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		
 	}
 	function autocheck(pos) {
 		if(pos == 'spring') { 
