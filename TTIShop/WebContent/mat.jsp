@@ -19,6 +19,7 @@
 	window.onload = function(){
 		var tag = readCookie("tag");
 		autocheck(tag);
+		document.cookie = 'tag=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	}
 	function autocheck(pos) {
 		if(pos == 'spring') { 
@@ -240,7 +241,7 @@
                     	<%for (int i=0; i<mat_list.size(); i++){%>
 	                        <div class="col-lg-4 col-md-6">
 	                            <div class="product__item">
-	                                <div class="product__item__pic set-bg" data-setbg="<%=mat_list.get(i).getImg_path() %>" onClick="location.href='./product-details.html'">
+	                                <div class="product__item__pic set-bg" data-setbg="<%=mat_list.get(i).getImg_path() %>" onClick="location.href='./product-details.jsp?g_num=<%=mat_list.get(i).getNum()%>'">
 	                                   <!--  <div class="label new">New</div> -->
 	                                    <%-- <ul class="product__hover">
 	                                        <li><a href="<%=mat_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -249,7 +250,7 @@
 	                                    </ul> --%>
 	                                </div>
 	                                <div class="product__item__text">
-	                                    <h6><a href="./product-details.html"><%= mat_list.get(i).getName() %></a></h6>
+	                                    <h6><a href="./product-details.jsp?g_num=<%=mat_list.get(i).getNum()%>"><%= mat_list.get(i).getName() %></a></h6>
 	                                    <div class="product__price"><%= mat_list.get(i).getPrice() %></div>
 	                                </div>
 	                            </div>
