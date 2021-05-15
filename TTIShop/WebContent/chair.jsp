@@ -123,7 +123,7 @@
 					<div class="tip">2</div> </a></li>
 		</ul>
 		<div class="offcanvas__logo">
-			<a href="./index.html"><img src="img/logo.png" alt=""></a>
+			<a href="./index.jsp"><img src="img/logo.png" alt=""></a>
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__auth">
@@ -144,13 +144,13 @@
 			<div class="row">
 				<div class="col-xl-3 col-lg-2">
 					<div class="header__logo">
-						<a href="./index.html"><img src="img/logo.jpg" alt=""></a>
+						<a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-7">
 					<nav class="header__menu">
 						<ul>
-							<li><a href="./index.html">HOME</a></li>
+							<li><a href="./index.jsp">HOME</a></li>
 							<li><a href="./mat.jsp">MAT</a></li>
 							<li><a href="./eco_bag.jsp">ECO-BAG</a></li>
 							<li><a href="./apron.jsp">APRON</a></li>
@@ -159,7 +159,7 @@
 							<li><a href="#">MYPAGE</a>
 								<ul class="dropdown">
 									<li><a href="./shop-cart.html">Shop Cart</a></li>
-									<li><a href="./checkout.html">Checkout</a></li>
+									<li><a href="./checkour.jsp">Checkout</a></li>
 								</ul></li>
 						</ul>
 					</nav>
@@ -198,7 +198,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb__links">
-						<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>의자</span>
+						<a href="./index.jsp"><i class="fa fa-home"></i> Home</a> <span>의자</span>
 					</div>
 				</div>
 			</div>
