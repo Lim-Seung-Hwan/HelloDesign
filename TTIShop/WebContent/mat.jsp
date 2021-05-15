@@ -159,7 +159,7 @@
                             <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
                                     <li><a href="./shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="./checkour.jsp">Checkout</a></li>
+                                    <li><a href="./checkout.jsp">Checkout</a></li>
                             </ul>
                             </li>
                         </ul>
