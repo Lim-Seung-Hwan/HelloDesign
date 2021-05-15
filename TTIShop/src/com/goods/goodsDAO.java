@@ -12,7 +12,7 @@ public class goodsDAO {
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	int cnt = 0;
-	goodsDTO info = null;
+	goodsDTO ginfo = null;
 
 	public void conn() { // DB 연결
 		try {
@@ -145,10 +145,10 @@ public class goodsDAO {
 				String img_path = rs.getString(4);
 				String tag = rs.getString(5);
 
-				info = new goodsDTO(num, price, name, img_path, tag, "mat");
+				ginfo = new goodsDTO(num, price, name, img_path, tag, "mat");
 
-				mat_list.add(info);
-				System.out.println(info);
+				mat_list.add(ginfo);
+				System.out.println(ginfo);
 			}
 
 		} catch (SQLException e) {
@@ -182,10 +182,10 @@ public class goodsDAO {
 					String img_path = rs.getString(4);
 					String tag = rs.getString(5);
 
-					info = new goodsDTO(num, price, name, img_path, tag, "mat");
+					ginfo = new goodsDTO(num, price, name, img_path, tag, "mat");
 
-					mat_list.add(info);
-					System.out.println(info);
+					mat_list.add(ginfo);
+					System.out.println(ginfo);
 				}
 
 			} catch (SQLException e) {
@@ -219,10 +219,10 @@ public class goodsDAO {
 				String img_path = rs.getString(4);
 				String tag = rs.getString(5);
 
-				info = new goodsDTO(num, price, name, img_path, tag, "eco");
+				ginfo = new goodsDTO(num, price, name, img_path, tag, "eco");
 
-				eco_list.add(info);
-				System.out.println(info);
+				eco_list.add(ginfo);
+				System.out.println(ginfo);
 			}
 
 		} catch (SQLException e) {
@@ -256,10 +256,10 @@ public class goodsDAO {
 					String img_path = rs.getString(4);
 					String tag = rs.getString(5);
 
-					info = new goodsDTO(num, price, name, img_path, tag, "eco");
+					ginfo = new goodsDTO(num, price, name, img_path, tag, "eco");
 
-					eco_list.add(info);
-					System.out.println(info);
+					eco_list.add(ginfo);
+					System.out.println(ginfo);
 				}
 
 			} catch (SQLException e) {
@@ -293,10 +293,10 @@ public class goodsDAO {
 				String img_path = rs.getString(4);
 				String tag = rs.getString(5);
 
-				info = new goodsDTO(num, price, name, img_path, tag, "apron");
+				ginfo = new goodsDTO(num, price, name, img_path, tag, "apron");
 
-				apron_list.add(info);
-				System.out.println(info);
+				apron_list.add(ginfo);
+				System.out.println(ginfo);
 			}
 
 		} catch (SQLException e) {
@@ -330,10 +330,10 @@ public class goodsDAO {
 					String img_path = rs.getString(4);
 					String tag = rs.getString(5);
 
-					info = new goodsDTO(num, price, name, img_path, tag, "apron");
+					ginfo = new goodsDTO(num, price, name, img_path, tag, "apron");
 
-					apron_list.add(info);
-					System.out.println(info);
+					apron_list.add(ginfo);
+					System.out.println(ginfo);
 				}
 
 			} catch (SQLException e) {
@@ -366,10 +366,10 @@ public class goodsDAO {
 				String img_path = rs.getString(4);
 				String tag = rs.getString(5);
 
-				info = new goodsDTO(num, price, name, img_path, tag, "chair");
+				ginfo = new goodsDTO(num, price, name, img_path, tag, "chair");
 
-				chair_list.add(info);
-				System.out.println(info);
+				chair_list.add(ginfo);
+				System.out.println(ginfo);
 			}
 
 		} catch (SQLException e) {
@@ -402,10 +402,10 @@ public class goodsDAO {
 				String img_path = rs.getString(4);
 				String tag = rs.getString(5);
 
-				info = new goodsDTO(num, price, name, img_path, tag, "chair");
+				ginfo = new goodsDTO(num, price, name, img_path, tag, "chair");
 
-				chair_list.add(info);
-				System.out.println(info);
+				chair_list.add(ginfo);
+				System.out.println(ginfo);
 			}
 
 		} catch (SQLException e) {
