@@ -147,11 +147,8 @@
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
-<<<<<<< HEAD
                        <ul>
-=======
                         <ul>
->>>>>>> refs/remotes/origin/master
                             <li><a href="./index.jsp">HOME</a></li>
                             <li><a href="./mat.jsp">MAT</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
