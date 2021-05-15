@@ -13,6 +13,7 @@ public class goodsDAO {
 	ResultSet rs = null;
 	int cnt = 0;
 	goodsDTO ginfo = null;
+	goodsDTO gdto = null;
 
 	public void conn() { // DB 연결
 		try {
@@ -91,11 +92,11 @@ public class goodsDAO {
 		return cnt;
 	}
 	
-	public goodsDTO details(goodsDTO dto) { // 상품 상세정보
+	public goodsDTO details(goodsDTO dto) { // 선택한 goods의 모든 정보를 db에서 가져옴
 		conn();
 
 		String sql = "SELECT * FROM shop_goods WHERE g_num = ?";
-		goodsDTO gdto = null;
+		
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getNum());

@@ -14,50 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ashion | Template</title>
 
-<script type="text/javascript">
-/* 공부 필요 */
-	window.onload = function(){
-		var tag = readCookie("tag");
-		autocheck(tag);
-	}
-	function autocheck(pos) {
-		if(pos == 'spring') { 
-			document.getElementById('spring').checked = true;
-			
-		}
-		if(pos == 'summer') {
-			document.getElementById('summer').checked = true;
-		}
-		if(pos == 'fall') {
-			document.getElementById('fall').checked = true;
-		}
-		if(pos == 'winter') {
-			document.getElementById('winter').checked = true;
-		}
-	}
-	
-  	function checkboxClick(tag) {
-		document.getElementById('spring').checked = false;
-		document.getElementById('summer').checked = false;
-		document.getElementById('fall').checked = false;
-		document.getElementById('winter').checked = false;
-		autocheck(tag);
-		document.cookie = encodeURIComponent("tag") + "=" + encodeURIComponent(tag);
-		location.reload();
-  	}
-  	
-  	function readCookie(name) {
-  	    var nameEQ = name + "=";
-  	    var ca = document.cookie.split(';');
-  	    for(var i=0;i < ca.length;i++) {
-  	        var c = ca[i];
-  	        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-  	        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-  	    }
-  	    return null;
-  	}
+	<script type="text/javascript">
 	</script>
-
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
@@ -75,11 +33,12 @@
 </head>
 
 <body>
+
 <%
 	memberDTO info = (memberDTO)session.getAttribute("info");
 
 	/* arraylist형인 apron_list받아옴. 일단 null */
-	ArrayList<goodsDTO> eco_list = null;
+	ArrayList<goodsDTO> mat_list = null;
 	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
 	Cookie[] cookies = request.getCookies();
 	String tag = null;
@@ -95,15 +54,15 @@
 	
 	/* tag를 선택 했는지 안했는지 */
 	if (tag != null) {/* tag를 선택 했을 때 - 선택한 테그에 대한 모든 정보 가져옴*/
-		goodsDAO ecodao = new goodsDAO();
-		eco_list = ecodao.pattern_eco(tag);
+		goodsDAO matdao = new goodsDAO();
+		mat_list = matdao.pattern_mat(tag);
 	} else { /* tag를 선택 안 했을 때 - 모든 정보 가져옴 */
-		goodsDAO ecodao = new goodsDAO();
-		eco_list = ecodao.select_eco();
+		goodsDAO matdao = new goodsDAO();
+		mat_list = matdao.select_mat();
 	}
 %>
-
-<div id="preloder">
+<!-- Page Preloder -->
+    <div id="preloder">
         <div class="loader"></div>
     </div>
 
@@ -121,10 +80,10 @@
             </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
+            <a href="./index.html"><img src="img/logo.jpg" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
-       <div class="offcanvas__auth">
+        <div class="offcanvas__auth">
            <%if(info !=null) { %>
              <a href="./update.jsp">회원정보변경</a>
              <a href="./LogoutService">Logout</a>
@@ -142,12 +101,12 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
+                        <a href="./index.html"><img src="img/logo.jpg" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
-                       <ul>
+                        <ul>
                             <li><a href="./index.jsp">HOME</a></li>
                             <li><a href="./mat.jsp">MAT</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
@@ -196,83 +155,138 @@
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
         <div class="container">
-            <div class="row">
+            <div class="row"> <!-- 나중에 고쳐. 카테고리 분류로 입력받아서 -->
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>에코백</span>
+                        <a href="./shop.html">shop</a>
+                        <span>Essential structured blazer</span> <!-- 상품명 -->
                     </div>
+                    
+                    <!-- <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="#">Women’s </a>
+                        <span>Essential structured blazer</span>
+                    </div> -->
+                    
                 </div>
             </div>
         </div>
     </div>
     <!-- Breadcrumb End -->
 
-    <!-- Shop Section Begin -->
-    <section class="shop spad">
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="shop__sidebar">
-                        <div class="sidebar__color">
-                            <div class="section-title">
-                                <h4>pattern</h4>
-                            </div>
-                           <!-- 테그마다 클릭할때 실행되는 함수를 지정 -->
-							<div class="size__list color__list">
-								<label for="spring" onClick="checkboxClick('spring')"> spring <input type="checkbox"
-									id="spring"> <span class="checkmark"></span>
-								</label> <label for="summer" onClick="checkboxClick('summer')"> summer <input type="checkbox"
-									id="summer"> <span class="checkmark"></span>
-								</label> <label for="fall" onClick="checkboxClick('fall')"> fall <input type="checkbox"
-									id="fall"> <span class="checkmark"></span>
-								</label> <label for="winter" onClick="checkboxClick('winter')"> winter <input type="checkbox"
-									id="winter"> <span class="checkmark"></span>
-								</label>
-							</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="row">
-                    	<%for (int i=0; i<eco_list.size(); i++){%>
-	                        <div class="col-lg-4 col-md-6">
-	                            <div class="product__item">
-	                                <div class="product__item__pic set-bg" data-setbg="<%=eco_list.get(i).getImg_path() %>" onClick="location.href='./product-details.html'">
-	                                   <!--  <div class="label new">New</div> -->
-	                                    <%-- <ul class="product__hover">
-	                                        <li><a href="<%=mat_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
-	                                        <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-	                                        <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-	                                    </ul> --%>
-	                                </div>
-	                                <div class="product__item__text">
-	                                    <h6><a href="./product-details.html"><%= eco_list.get(i).getName() %></a></h6>
-	                                    <div class="product__price"><%= eco_list.get(i).getPrice() %></div>
-	                                </div>
-	                            </div>
-	                        </div>
-                        <%}%>
+                <div class="col-lg-6">
+                    <div class="product__details__pic">
                         
-                        <div class="col-lg-12 text-center">
-                            <div class="pagination__option">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                        <div class="product__details__slider__content">
+                            <div class="product__details__pic__slider owl-carousel">
+                                <img data-hash="product-1" class="product__big__img" src="#" alt="">
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="product__details__text">
+                    	<h3>Essential structured blazer </h3>
+                    	
+                        <!-- <h3>Essential structured blazer <span>Brand: SKMEIMore Men Watches from SKMEI</span></h3> -->
+                       <!--  <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <span>( 138 reviews )</span>
+                        </div> -->
+                        <div class="product__details__price">75.000원 </div> <!-- 계속 빨간색임!! -->
+                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
+                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <div class="product__details__button">
+                            <div class="quantity">
+                                <span>Quantity:</span>
+                                <div class="pro-qty">
+                                    <input type="text" value="1">
+                                </div>
+                            </div>
+                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <!-- <ul>
+                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+                            </ul> -->
+                        </div>
+                        <!-- <div class="product__details__widget">
+                            <ul>
+                                <li>
+                                    <span>Availability:</span>
+                                    <div class="stock__checkbox">
+                                        <label for="stockin">
+                                            In Stock
+                                            <input type="checkbox" id="stockin">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>Available color:</span>
+                                    <div class="color__checkbox">
+                                        <label for="red">
+                                            <input type="radio" name="color__radio" id="red" checked>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label for="black">
+                                            <input type="radio" name="color__radio" id="black">
+                                            <span class="checkmark black-bg"></span>
+                                        </label>
+                                        <label for="grey">
+                                            <input type="radio" name="color__radio" id="grey">
+                                            <span class="checkmark grey-bg"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>Available size:</span>
+                                    <div class="size__btn">
+                                        <label for="xs-btn" class="active">
+                                            <input type="radio" id="xs-btn">
+                                            xs
+                                        </label>
+                                        <label for="s-btn">
+                                            <input type="radio" id="s-btn">
+                                            s
+                                        </label>
+                                        <label for="m-btn">
+                                            <input type="radio" id="m-btn">
+                                            m
+                                        </label>
+                                        <label for="l-btn">
+                                            <input type="radio" id="l-btn">
+                                            l
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>Promotions:</span>
+                                    <p>Free shipping</p>
+                                </li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+               
             </div>
+            
         </div>
     </section>
-    <!-- Shop Section End -->
+    <!-- Product Details Section End -->
 
     <!-- Footer Section Begin -->
-	<div class="row"></div>
-    <div class="row"></div>
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+	<footer class="footer" style="padding-bottom: 50px;">
+    
     <div class="row"></div>
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 <div class="footer__copyright__text">
@@ -280,9 +294,10 @@
                 </div>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 	
+	</footer>
+   
 	<!-- Footer Section End -->
-	
-	
+
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
