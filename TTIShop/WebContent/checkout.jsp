@@ -66,8 +66,13 @@
 	goodsDTO info = (goodsDTO)session.getAttribute("info"); */
 
 	cartDAO cartdao = new cartDAO();
+	ArrayList<cartDTO> cart_list = null;
 	memberDTO info=(memberDTO)session.getAttribute("info");
-	ArrayList<cartDTO> cart_list = cartdao.select_cart(info.getNum());
+	if(info==null) {
+		response.sendRedirect("login.jsp");
+	} else {
+		cart_list = cartdao.select_cart(info.getNum());
+	}
 	
 %>
     <!-- Page Preloder -->
@@ -243,7 +248,7 @@
                                             <span class="top__text__right">가격</span>
                                         </li>
                                         <%int sum = 0;
-                                        for (int i=0; i<cart_list.size(); i++){%>
+                                        if(info!=null) for (int i=0; i<cart_list.size(); i++){%>
                                         <li><%=cart_list.get(i).getC_name()%> <span><%=cart_list.get(i).getC_price() %></span></li>
                                         <% sum += cart_list.get(i).getC_price(); } %>
                                     </ul>
