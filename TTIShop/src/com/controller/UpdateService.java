@@ -17,8 +17,10 @@ public class UpdateService extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		memberDTO loginDTO = (memberDTO) session.getAttribute("info");
+		
 
 		String id = loginDTO.getId();
 		String pw = request.getParameter("pw");
@@ -31,6 +33,7 @@ public class UpdateService extends HttpServlet {
 		int cnt = dao.update(info);
 
 		if (cnt > 0) {
+			
 			System.out.println("정보수정성공");
 			session.setAttribute("upsskey", info);
 			response.sendRedirect("login.jsp");

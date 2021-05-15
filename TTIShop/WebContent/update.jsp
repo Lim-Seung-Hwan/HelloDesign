@@ -13,6 +13,17 @@
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script type="text/javascript">
+	function edtCheck() {
+		var form = document.update;
+		var pwCheck = form.pw.value == "";
+		if(pwCheck) {
+			alert("비밀번호를 입력해주세요.");
+		} else {
+			form.submit();
+		}
+	}
+</script>
 <title>Ashion | Template</title>
 <!-- Google Font -->
 <link
@@ -36,6 +47,10 @@
 
 	<%
 		memberDTO info=(memberDTO)session.getAttribute("info");
+		if(info==null){
+			System.out.println("로그인 필요");
+			response.sendRedirect("login.jsp");
+		}
 	%>
 
     <!-- Page Preloder -->
@@ -155,15 +170,17 @@
                       
                         <div class="contact__form">
                             <h5>회원정보수정</h5>
-                            <form action="UpdateService" method="post">
+                            <form action="UpdateService" method="post" name="update">
                             <div class="col-lg-12">
-                                <input type="text" placeholder="비밀번호" name="pw">
-                                <input type="text" placeholder="이름" name="name">
-                                <input type="text" placeholder="주소" name="address">
-                                <input type="text" placeholder="전화번호" name="phone" style="margin-bottom: 35px;">
+                            <%if(info != null) { %>
+                                <input type="password" placeholder="비밀번호" name="pw">
+                                <input type="text" placeholder="이름" name="name" value="<%=info.getName() %>">
+                                <input type="text" placeholder="주소" name="address" value="<%=info.getAddress() %>">
+                                <input type="text" placeholder="전화번호" name="phone" value="<%=info.getPhone() %>" style="margin-bottom: 35px;">
+                                <% } %>
                            </div>
                           <!--  <textarea placeholder="Message"></textarea>-->
-                                <button type="submit" class="site-btn">수정완료</button>
+                                <button type="button" class="site-btn" onClick="edtCheck()">수정완료</button>
                             </form>
                         </div>
                     </div>
