@@ -151,8 +151,8 @@
                         <ul>
                             <li><a href="./index.jsp">HOME</a></li>
                             <li><a href="./mat.jsp">MAT</a></li>
-                            <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
-                            <li class="active"><a href="./apron.jsp">APRON</a></li>
+                            <li class="active"><a href="./eco_bag.jsp">ECO-BAG</a></li>
+                            <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
                             <li><a href="./product-details.html">주문제작</a></li>
                             <li><a href="#">MYPAGE</a>
