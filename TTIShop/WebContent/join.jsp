@@ -143,7 +143,7 @@
                             <form action="JoinService" method="post">
                             <div class="col-lg-12">
                                 <input type="text" placeholder="아이디" name="id">
-                                <input type="text" placeholder="비밀번호" name="pw">
+                                <input type="password" placeholder="비밀번호" name="pw">
                                 <input type="text" placeholder="이름" name="name">
                                 <input type="text" placeholder="주소" name="address">
                                 <input type="text" placeholder="전화번호" name="phone" style="margin-bottom: 35px;">

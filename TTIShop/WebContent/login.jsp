@@ -146,7 +146,7 @@
                             <form action="LoginService" method="post">
                             <div class="col-lg-12">
                                 <input type="text" placeholder="아이디" name="id">
-                                <input type="text" placeholder="비밀번호" name="pw" style="margin-bottom: 35px;">
+                                <input type="password" placeholder="비밀번호" name="pw" style="margin-bottom: 35px;">
                                 </div>
                                 
                           <!--  <textarea placeholder="Message"></textarea>-->
