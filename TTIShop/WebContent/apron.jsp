@@ -237,7 +237,7 @@
                     	<%for (int i=0; i<apron_list.size(); i++){%>
 	                        <div class="col-lg-4 col-md-6">
 	                            <div class="product__item">
-	                                <div class="product__item__pic set-bg" data-setbg="<%=apron_list.get(i).getImg_path() %>" onClick="location.href='./product-details.html'">
+	                                <div class="product__item__pic set-bg" data-setbg="<%=apron_list.get(i).getImg_path() %>" onClick="location.href='./product-details.jsp?g_num=<%=apron_list.get(i).getNum()%>'">
 	                                   <!--  <div class="label new">New</div> -->
 	                                    <%-- <ul class="product__hover">
 	                                        <li><a href="<%=mat_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -246,7 +246,7 @@
 	                                    </ul> --%>
 	                                </div>
 	                                <div class="product__item__text">
-	                                    <h6><a href="./product-details.html"><%= apron_list.get(i).getName() %></a></h6>
+	                                    <h6><a href="./product-details.jsp?g_num=<%=apron_list.get(i).getNum()%>"><%= apron_list.get(i).getName() %></a></h6>
 	                                    <div class="product__price"><%= apron_list.get(i).getPrice() %></div>
 	                                </div>
 	                            </div>

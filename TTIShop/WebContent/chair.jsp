@@ -240,11 +240,11 @@
 							<div class="product__item">
 								<div class="product__item__pic set-bg"
 									data-setbg="<%=chair_list.get(i).getImg_path() %>"
-									onClick="location.href='./product-details.html'">
+									onClick="location.href='./product-details.jsp?g_num=<%=chair_list.get(i).getNum()%>'">
 								</div>
 								<div class="product__item__text">
 									<h6>
-										<a href="./product-details.html"><%= chair_list.get(i).getName() %></a>
+										<a href="./product-details.jsp?g_num=<%=chair_list.get(i).getNum()%>"><%= chair_list.get(i).getName() %></a>
 									</h6>
 									<div class="product__price"><%= chair_list.get(i).getPrice() %></div>
 								</div>

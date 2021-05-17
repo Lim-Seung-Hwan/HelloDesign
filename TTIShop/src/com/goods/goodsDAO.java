@@ -92,14 +92,14 @@ public class goodsDAO {
 		return cnt;
 	}
 	
-	public goodsDTO details(goodsDTO dto) { // 선택한 goods의 모든 정보를 db에서 가져옴
+	public goodsDTO details(int number) { // 선택한 goods의 모든 정보를 db에서 가져옴
 		conn();
 
 		String sql = "SELECT * FROM shop_goods WHERE g_num = ?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, dto.getNum());
+			psmt.setInt(1, number);
 
 			rs = psmt.executeQuery();
 
@@ -245,7 +245,7 @@ public class goodsDAO {
 
 			try {
 
-				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='eco'AND g_tag=?";
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='eco' AND g_tag=?";
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, i_tag);
 				rs = psmt.executeQuery();
@@ -283,7 +283,7 @@ public class goodsDAO {
 
 		try {
 
-			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='apron";
+			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='apron'";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
@@ -319,7 +319,7 @@ public class goodsDAO {
 
 			try {
 
-				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='apron'AND g_tag=?";
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='apron' AND g_tag=?";
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, i_tag);
 				rs = psmt.executeQuery();
@@ -391,7 +391,7 @@ public class goodsDAO {
 
 		try {
 
-			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='chair'AND g_tag=?";
+			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='chair' AND g_tag=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, i_tag);
 			rs = psmt.executeQuery();
