@@ -12,6 +12,7 @@ public class memberDAO {
 	ResultSet rs = null;
 	int cnt = 0;
 	memberDTO info = null;
+	
 
 	public void conn() {
 		try {
@@ -118,5 +119,7 @@ public class memberDAO {
 		
 		return cnt;
 	}
+	
+	
 	
 }

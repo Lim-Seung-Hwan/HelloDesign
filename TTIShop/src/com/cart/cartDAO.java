@@ -92,15 +92,16 @@ public class cartDAO {
 
 		try {
 
-			String sql = "SELECT g.g_name, g.g_price FROM shop_goods g, shop_member m, shop_cart c WHERE c.m_num=m.m_num AND c.g_num=g.g_num AND m.m_num=?";
+			String sql = "SELECT g.g_name, g.g_price, g.g_img_path FROM shop_goods g, shop_member m, shop_cart c WHERE c.m_num=m.m_num AND c.g_num=g.g_num AND m.m_num=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				String name = rs.getString(1);
 				int price = rs.getInt(2);
+				String imgpath = rs.getString(3);
 
-				info = new cartDTO(name, price);
+				info = new cartDTO(name, price, imgpath);
 
 				cart_list.add(info);
 			}

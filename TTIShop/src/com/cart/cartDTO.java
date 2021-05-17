@@ -5,11 +5,24 @@ public class cartDTO {
 	private int g_num;
 	private String c_name;
 	private int c_price;
+	private String c_imgpath;
 	
+	public String getC_imgpath() {
+		return c_imgpath;
+	}
+	public void setC_imgpath(String c_imgpath) {
+		this.c_imgpath = c_imgpath;
+	}
 	public cartDTO(String c_name, int c_price) {
 		super();
 		this.c_name = c_name;
 		this.c_price = c_price;
+	}
+	public cartDTO(String c_name, int c_price, String c_imgpath) {
+		super();
+		this.c_name = c_name;
+		this.c_price = c_price;
+		this.c_imgpath = c_imgpath;
 	}
 	public cartDTO(int m_num, int g_num) {
 		super();
