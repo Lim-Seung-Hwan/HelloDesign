@@ -4,6 +4,17 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.goods.goodsDTO"%>
 <%@page import="com.goods.goodsDAO"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	int g_num=Integer.parseInt(request.getParameter("g_num"));
+	memberDTO info = (memberDTO)session.getAttribute("info");
+	goodsDAO gdao = new goodsDAO();
+
+	goodsDTO data = gdao.details(g_num);
+	String cat = data.getCategory();
+	
+	
+%>
 <html lang="zxx">
 
 <head>
@@ -12,7 +23,7 @@
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ashion | Template</title>
+    <title><%if(data!=null){%><%=data.getName() %><%} %> - Ashion | Template</title>
 
 	<script type="text/javascript">
 	</script>
@@ -34,33 +45,7 @@
 
 <body>
 
-<%
-	memberDTO info = (memberDTO)session.getAttribute("info");
 
-	/* arraylist형인 apron_list받아옴. 일단 null */
-	ArrayList<goodsDTO> mat_list = null;
-	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
-	Cookie[] cookies = request.getCookies();
-	String tag = null;
-	if(cookies != null && cookies.length > 0)
-	{
-		for(int i = 0; i < cookies.length; i++)
-		{
-			if(cookies[i].getName().equals("tag")) {
-				tag = URLDecoder.decode(cookies[i].getValue(), "utf-8");
-			}
-		}
-	}
-	
-	/* tag를 선택 했는지 안했는지 */
-	if (tag != null) {/* tag를 선택 했을 때 - 선택한 테그에 대한 모든 정보 가져옴*/
-		goodsDAO matdao = new goodsDAO();
-		mat_list = matdao.pattern_mat(tag);
-	} else { /* tag를 선택 안 했을 때 - 모든 정보 가져옴 */
-		goodsDAO matdao = new goodsDAO();
-		mat_list = matdao.select_mat();
-	}
-%>
 <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -108,10 +93,10 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="./index.jsp">HOME</a></li>
-                            <li><a href="./mat.jsp">MAT</a></li>
-                            <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
-                            <li class="active"><a href="./apron.jsp">APRON</a></li>
-                            <li><a href="./chair.jsp">CHAIR</a></li>
+                            <li <%if(cat.equals("mat")) { %> class="active"<%} %>><a href="./mat.jsp">MAT</a></li>
+                            <li <%if(cat.equals("eco")) { %> class="active"<%} %>><a href="./eco_bag.jsp">ECO-BAG</a></li>
+                            <li <%if(cat.equals("apron")) { %> class="active"<%} %>><a href="./apron.jsp">APRON</a></li>
+                            <li <%if(cat.equals("chair")) { %> class="active"<%} %>><a href="./chair.jsp">CHAIR</a></li>
                             <li><a href="./product-details.html">주문제작</a></li>
                             <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
@@ -158,9 +143,14 @@
             <div class="row"> <!-- 나중에 고쳐. 카테고리 분류로 입력받아서 -->
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./shop.html">shop</a>
-                        <span>Essential structured blazer</span> <!-- 상품명 -->
+                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
+                        <%if(cat.equals("mat")) { %><a href="./mat.jsp">돗자리</a><%} %>
+                        <%if(cat.equals("eco")) { %><a href="./eco-bag.jsp">에코백</a><%} %>
+                        <%if(cat.equals("chair")) { %><a href="./chair.jsp">의자</a><%} %>
+                        <%if(cat.equals("apron")) { %><a href="./apron.jsp">앞치마</a><%} %>
+                        <%  if(data!=null) { %><span><%=data.getName() %></span> <!-- 상품명 -->
+                        <% } else { %> <span>없는 상품입니다.</span>
+                        <% } %>
                     </div>
                     
                     <!-- <div class="breadcrumb__links">
@@ -184,15 +174,19 @@
                         
                         <div class="product__details__slider__content">
                             <div class="product__details__pic__slider owl-carousel">
-                                <img data-hash="product-1" class="product__big__img" src="#" alt="">
-                                
+                            <% if(data!=null) { %>
+                                <img data-hash="product-1" class="product__big__img" src="<%=data.getImg_path() %>" alt="">
+                            <%} %>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                    	<h3>Essential structured blazer </h3>
+                 	   <%  if(data!=null) { %><h3><%=data.getName() %> </h3> <!-- 상품명 -->
+                        <% } else { %> <h3>없는 상품입니다.</h3>
+                        <% } %>
+                    	
                     	
                         <!-- <h3>Essential structured blazer <span>Brand: SKMEIMore Men Watches from SKMEI</span></h3> -->
                        <!--  <div class="rating">
@@ -203,10 +197,12 @@
                             <i class="fa fa-star"></i>
                             <span>( 138 reviews )</span>
                         </div> -->
-                        <div class="product__details__price">75.000원 </div> <!-- 계속 빨간색임!! -->
-                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
-                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
-                        <div class="product__details__button">
+                        <%  if(data!=null) { %><div class="product__details__price"><%=data.getPrice() %>원 </div> <!-- 계속 빨간색임!! --></h3> <!-- 상품명 -->
+                        <% } else { %>
+                        <% } %>
+                        
+                        <p></p>
+                        <%  if(data!=null) { %><div class="product__details__button">
                             <div class="quantity">
                                 <span>Quantity:</span>
                                 <div class="pro-qty">
@@ -218,7 +214,10 @@
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                 <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
                             </ul> -->
-                        </div>
+                        </div> <!-- 상품명 -->
+                        <% } else { %>
+                        <% } %>
+                        
                         <!-- <div class="product__details__widget">
                             <ul>
                                 <li>
