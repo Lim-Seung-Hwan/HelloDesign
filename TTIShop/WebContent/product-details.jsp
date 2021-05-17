@@ -197,11 +197,14 @@
                             <i class="fa fa-star"></i>
                             <span>( 138 reviews )</span>
                         </div> -->
-                        <%  if(data!=null) { %><div class="product__details__price"><%=data.getPrice() %>원 </div> <!-- 계속 빨간색임!! --></h3> <!-- 상품명 -->
+                        <%  if(data!=null) { %><div class="product__details__price"><%=data.getPrice() %>원 </div> <!-- 계속 빨간색임!! -->
                         <% } else { %>
                         <% } %>
                         
-                        <p></p>
+                        <p><%  if(data!=null) { %><%=data.getInfo() %></p>
+                        <% } else { %>
+                        <% } %>
+                        
                         <%  if(data!=null) { %><div class="product__details__button">
                             <div class="quantity">
                                 <span>Quantity:</span>
@@ -209,7 +212,7 @@
                                     <input type="text" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <a href="./shop-cart.html" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
                             <!-- <ul>
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                 <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
