@@ -3,6 +3,8 @@ package com.example.hellodesign;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -22,7 +24,12 @@ public class MainActivity extends AppCompatActivity {
         web.setWebViewClient(new WebViewClient());
         web.loadUrl("http://digiwb.softether.net:8085/TTIShop/index.jsp");
 
-
+        web.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                return super.onJsAlert(view, url, message, result);
+            }
+        });
 
 
     }
