@@ -194,10 +194,9 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                         </div>
                                     </td>
                                     <td class="cart__total"><%=total %> 원</td>
-                                    <script type="text/javascript">
-
-                                    </script>
-                                    <td onclick="location.href='CartDelService?gnum=<%=cart_list.get(i).getG_num()%>'" class="cart__close"><span class="icon_close"></span></td>
+                                    <td class="cart__close"><span onclick="location.href='CartDelService?gnum=<%=cart_list.get(i).getG_num()%>'" class="icon_close"></span>
+                                    <a><span onclick="var value = document.getElementsByClassName("count").item(0).value; location.href='CartUpdateService?gnum=<%=cart_list.get(i).getG_num()%>&mnum=<%=cart_list.get(i).getM_num()%>&count='+value"><i class="fa fa-check-circle-o"></i></span></a>
+                                    </td>
                                 </tr>
                                 <% price += total; } %>
                             </tbody>

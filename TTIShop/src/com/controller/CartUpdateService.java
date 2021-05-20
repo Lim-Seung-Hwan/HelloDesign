@@ -37,7 +37,7 @@ public class CartUpdateService extends HttpServlet {
 		
 
 		cartDAO cdao = new cartDAO();
-		int cnt = cdao.delete(cdto);
+		int cnt = cdao.update(cdto);
 
 		if (cnt > 0) {
 			System.out.println("성공");
