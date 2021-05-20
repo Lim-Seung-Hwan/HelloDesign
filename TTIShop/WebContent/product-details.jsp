@@ -212,7 +212,7 @@
                                     <input type="text" value="1">
                                 </div>
                             </div>
-                            <a href="./shop-cart.html" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <a href="./shop-cart.jsp" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
                             <!-- <ul>
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                 <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>

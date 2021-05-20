@@ -18,7 +18,8 @@
     
      <script language="javascript">
   	function showPopup() {
-		var chkbox = document.checkout__form.check_order.checked;
+  		
+  	 	var chkbox = document.checkout__form.check_order.checked;
 		if(chkbox){
 			var namecheck = document.checkout__form.name.value == "";
 			var addrcheck = document.checkout__form.name.value == "";
@@ -30,7 +31,8 @@
 				document.cookie = encodeURIComponent("addr") + "=" + encodeURIComponent(document.checkout__form.addr.value);
 				document.cookie = encodeURIComponent("detail_addr") + "=" + encodeURIComponent(document.checkout__form.detail_addr.value);
 				document.cookie = encodeURIComponent("phone") + "=" + encodeURIComponent(document.checkout__form.phone.value);
-		  		window.open("receipt.html", "전자결제 신용카드 ", "width=400, height=500, left=100, top=50");
+		  		window.open("HelloDesign_Pay.jsp", "전자결제 신용카드 ", "width=500, height=300, left=100, top=50");
+		  	//결제창 넘어가는 파일, 팝업창의 별칭, 팝업창 크기
 			}
 			else {
 				alert ('모든 양식을 기록해주세요');
@@ -38,7 +40,7 @@
 		} else if(!chkbox) {
 			alert("주문 내역을 확인해주세요.");
 		}
-  		
+  		 
   		
   		}
  	 </script>
