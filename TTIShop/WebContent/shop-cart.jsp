@@ -187,13 +187,13 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart__price"><%=cart_list.get(i).getC_price() %></td>
+                                    <td class="cart__price"><%=cart_list.get(i).getC_price() %> 원</td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
                                             <input type="text" name="count" class="count" value="<%=cart_list.get(i).getC_count() %>" readonly>
                                         </div>
                                     </td>
-                                    <td class="cart__total"><%=total %></td>
+                                    <td class="cart__total"><%=total %> 원</td>
                                     <script type="text/javascript">
 
                                     </script>
@@ -227,7 +227,7 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                     <div class="cart__total__procced">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Total <span><%=price %></span></li>
+                            <li>Total <span><%=price %> 원</span></li>
                         </ul>
                         <a href="./checkout.jsp" class="primary-btn">Proceed to checkout</a>
                     </div>
