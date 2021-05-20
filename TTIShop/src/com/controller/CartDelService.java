@@ -25,8 +25,11 @@ public class CartDelService extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int mnum = Integer.parseInt(request.getParameter("mnum"));
+		HttpSession session = request.getSession();
+		memberDTO loginDTO = (memberDTO) session.getAttribute("info");
+		int mnum = loginDTO.getNum();
 		int gnum = Integer.parseInt(request.getParameter("gnum"));
+		System.out.println("mnum=" + mnum + "gnum=" + gnum);
 		cartDTO cdto = new cartDTO(mnum, gnum);
 		
 		
@@ -39,7 +42,7 @@ public class CartDelService extends HttpServlet {
 		} else {
 			System.out.println("실패");
 		}
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("shop-cart.jsp");
 	}
 
 }

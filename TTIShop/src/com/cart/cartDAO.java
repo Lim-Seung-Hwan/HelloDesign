@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.member.memberDTO;
+
 
 public class cartDAO {
 	Connection conn = null;
@@ -47,11 +49,12 @@ public class cartDAO {
 	public int insert(cartDTO dto) { // 상품 등록
 		conn();
 		try {
-			String sql = "INSERT INTO shop_cart VALUES(?, ?)";
+			String sql = "INSERT INTO shop_cart VALUES(?, ?, ?)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getM_num());
 			psmt.setInt(2, dto.getG_num());
+			psmt.setInt(3, dto.getC_count());
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,6 +66,27 @@ public class cartDAO {
 
 	}
 	
+	public int update(cartDTO dto) {
+		conn();
+		try {
+			
+			
+			String sql = "UPDATE shop_cart SET g_count=? WHERE m_num=? and g_num=?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getC_count());
+			psmt.setInt(2, dto.getM_num());
+			psmt.setInt(3, dto.getG_num());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
 	public int delete(cartDTO dto) { // 상품 등록
 		conn();
 		try {
@@ -92,7 +116,7 @@ public class cartDAO {
 
 		try {
 
-			String sql = "SELECT g.g_name, g.g_price, g.g_img_path FROM shop_goods g, shop_member m, shop_cart c WHERE c.m_num=m.m_num AND c.g_num=g.g_num AND m.m_num=?";
+			String sql = "SELECT g.g_name, g.g_price, g.g_img_path, c.g_count, g.g_num FROM shop_goods g, shop_member m, shop_cart c WHERE c.m_num=m.m_num AND c.g_num=g.g_num AND m.m_num=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
 			rs = psmt.executeQuery();
@@ -100,8 +124,10 @@ public class cartDAO {
 				String name = rs.getString(1);
 				int price = rs.getInt(2);
 				String imgpath = rs.getString(3);
+				int count = rs.getInt(4);
+				int g_num = rs.getInt(5);
 
-				info = new cartDTO(name, price, imgpath);
+				info = new cartDTO(name, price, imgpath, count, g_num);
 
 				cart_list.add(info);
 			}

@@ -10,17 +10,24 @@
 <%
 cartDAO cartdao = new cartDAO();
 int g_num = 0;
+int count = 1;
 cartDTO dto = null;
+ArrayList<cartDTO> cart_list = null; 
 memberDTO info = (memberDTO)session.getAttribute("info");
+System.out.println(request.getParameter("g_num") + ", " + request.getParameter("count"));
 if(request.getParameter("g_num") != null) {
 	g_num=Integer.parseInt(request.getParameter("g_num"));
-	dto = new cartDTO(info.getNum(), g_num);
+	count=Integer.parseInt(request.getParameter("count"));
+	if(info != null) {
+		dto = new cartDTO(info.getNum(), g_num, count);
+	} else response.sendRedirect("loginFail.jsp?trying=0");
 }
 if (g_num != 0) {
 	cartdao.insert(dto);
 }
+if(info!=null) {cart_list = cartdao.select_cart(info.getNum());}
+else response.sendRedirect("loginFail.jsp?try_login=0");
 
-ArrayList<cartDTO> cart_list = cartdao.select_cart(info.getNum());
 %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -99,7 +106,7 @@ ArrayList<cartDTO> cart_list = cartdao.select_cart(info.getNum());
                            <!--  <li><a href="#">주문제작</a></li>  -->
                             <li class="active"><a href="#">MYPAGE</a>
                             <ul class="dropdown">
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./shop-cart.jsp">Shop Cart</a></li>
                                     <li><a href="./checkout.jsp">Checkout</a></li>
                             </ul>
                             </li>
@@ -164,9 +171,11 @@ ArrayList<cartDTO> cart_list = cartdao.select_cart(info.getNum());
                             </thead>
                             <tbody>
                                 <tr>
-                                <% for (int i = 0; i<cart_list.size(); i++) { %>
+                                <% int price = 0;
+                                	int total = 0;
+                                if(cart_list != null) for (int i = 0; i<cart_list.size(); i++) { total = cart_list.get(i).getC_price() * cart_list.get(i).getC_count();%>
                                     <td class="cart__product__item">
-                                        <img src="img/shop-cart/cp-1.jpg" alt="">
+                                        <img src="<%=cart_list.get(i).getC_imgpath() %>" alt="" style='width:90px;'>
                                         <div class="cart__product__item__title">
                                             <h6><%=cart_list.get(i).getC_name() %></h6>
                                             <div class="rating">
@@ -181,25 +190,16 @@ ArrayList<cartDTO> cart_list = cartdao.select_cart(info.getNum());
                                     <td class="cart__price"><%=cart_list.get(i).getC_price() %></td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
-                                            <input type="text" value="1">
+                                            <input type="text" name="count" class="count" value="<%=cart_list.get(i).getC_count() %>" readonly>
                                         </div>
                                     </td>
-                                    <td class="cart__total"><%=cart_list.get(i).getC_price() %></td>
-                                    <form name="param" action="CartDelService" style="display:none">
-                                    	<input type="text" name='mnum' value="<%=info.getNum() %>" style="display:none">
-                                    	<input type="text" name='gnum' value="<%=g_num %>" style="display:none">
-                                    	
-                                    </form>
+                                    <td class="cart__total"><%=total %></td>
                                     <script type="text/javascript">
-                                    function paramsubmit(){
-                                    	  document.forms['param'].action = "./CartDelService";
-                                    	  document.forms['param'].method = "post";
-                                    	  document.forms['param'].submit();
-                                    	}
+
                                     </script>
-                                    <td class="cart__close" onClick="paramsubmit()"><span class="icon_close"></span></td>
+                                    <td onclick="location.href='CartDelService?gnum=<%=cart_list.get(i).getG_num()%>'" class="cart__close"><span class="icon_close"></span></td>
                                 </tr>
-                                <%} %>
+                                <% price += total; } %>
                             </tbody>
                         </table>
                     </div>
@@ -213,26 +213,21 @@ ArrayList<cartDTO> cart_list = cartdao.select_cart(info.getNum());
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="cart__btn update__btn">
-                        <a href="#"><span class="icon_loading"></span> Update cart</a>
+                        <a onclick="updateSubmit()"><span class="icon_loading"></span> Update cart</a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="discount__content">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
-                            <button type="submit" class="site-btn">Apply</button>
-                        </form>
+                        
                     </div>
                 </div>
                 <div class="col-lg-4 offset-lg-2">
                     <div class="cart__total__procced">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 750.0</span></li>
-                            <li>Total <span>$ 750.0</span></li>
+                            <li>Total <span><%=price %></span></li>
                         </ul>
                         <a href="./checkout.jsp" class="primary-btn">Proceed to checkout</a>
                     </div>

@@ -100,7 +100,7 @@
                             <li><a href="./product-details.html">주문제작</a></li>
                             <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="./shop-cart.jsp">Shop Cart</a></li>
                                     <li><a href="./checkout.jsp">Checkout</a></li>
                             </ul>
                             </li>
@@ -198,27 +198,35 @@
                             <span>( 138 reviews )</span>
                         </div> -->
                         <%  if(data!=null) { %><div class="product__details__price"><%=data.getPrice() %>원 </div> <!-- 계속 빨간색임!! -->
-                        <% } else { %>
                         <% } %>
                         
                         <p><%  if(data!=null) { %><%=data.getInfo() %></p>
-                        <% } else { %>
                         <% } %>
                         
                         <%  if(data!=null) { %><div class="product__details__button">
                             <div class="quantity">
                                 <span>Quantity:</span>
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" name="count" class="c_count" value="1">
                                 </div>
                             </div>
-                            <a href="./shop-cart.html" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <form action="shop-cart.jsp" name="add_cart" style="display:none" method='post'>
+                            	<input type="text" name="g_num" value="<%=data.getNum() %>">
+                            	<input type="text" name="count">
+                            </form>
+                            <script type="text/javascript">
+                            function sub_details() {
+                            	document.add_cart.count.value = document.getElementsByClassName('c_count').item(0).value;
+                            	if(document.add_cart.count.value >= 1) {document.add_cart.submit() }
+                            	else { alert ("수량을 1개 이상 입력해야합니다.")}
+                            }
+                            </script>
+                            <a class="cart-btn" onClick="sub_details()"><span class="icon_bag_alt"></span> Add to cart</a>
                             <!-- <ul>
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                 <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
                             </ul> -->
                         </div> <!-- 상품명 -->
-                        <% } else { %>
                         <% } %>
                         
                         <!-- <div class="product__details__widget">
