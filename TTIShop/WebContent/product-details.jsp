@@ -210,18 +210,7 @@
                                     <input type="text" name="count" class="c_count" value="1">
                                 </div>
                             </div>
-                            <form action="shop-cart.jsp" name="add_cart" style="display:none" method='post'>
-                            	<input type="text" name="g_num" value="<%=data.getNum() %>">
-                            	<input type="text" name="count">
-                            </form>
-                            <script type="text/javascript">
-                            function sub_details() {
-                            	document.add_cart.count.value = document.getElementsByClassName('c_count').item(0).value;
-                            	if(document.add_cart.count.value >= 1) {document.add_cart.submit() }
-                            	else { alert ("수량을 1개 이상 입력해야합니다.")}
-                            }
-                            </script>
-                            <a class="cart-btn" onClick="sub_details()"><span class="icon_bag_alt"></span> Add to cart</a>
+                            <a href="./shop-cart.jsp" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
                             <!-- <ul>
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                 <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
