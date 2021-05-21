@@ -54,6 +54,12 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script type="text/javascript">
+  	function updateSubmit(num,gnum){
+      var value = document.getElementsByClassName("count").item(num).value;
+      location.href='CartUpdateService?gnum='+ gnum +'&count='+value;
+    }
+    </script>
 </head>
 
 <body>
@@ -195,7 +201,7 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                     </td>
                                     <td class="cart__total"><%=total %> 원</td>
                                     <td class="cart__close"><span onclick="location.href='CartDelService?gnum=<%=cart_list.get(i).getG_num()%>'" class="icon_close"></span>
-                                    <a><span onclick="var value = document.getElementsByClassName("count").item(0).value; location.href='CartUpdateService?gnum=<%=cart_list.get(i).getG_num()%>&mnum=<%=cart_list.get(i).getM_num()%>&count='+value"><i class="fa fa-check-circle-o"></i></span></a>
+                                    <a><span onclick="updateSubmit(<%=i%>,<%=cart_list.get(i).getG_num()%>)"><i class="fa fa-check-circle-o"></i></span></a>
                                     </td>
                                 </tr>
                                 <% price += total; } %>
@@ -212,7 +218,7 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="cart__btn update__btn">
-                        <a onclick="updateSubmit()"><span class="icon_loading"></span> Update cart</a>
+                        <a onclick=""><span class="icon_loading"></span> Update cart</a>
                     </div>
                 </div>
             </div>
