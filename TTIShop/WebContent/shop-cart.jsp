@@ -78,7 +78,9 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                 <div class="tip">2</div>
             </a></li>
             <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
+                <%if(cart_list!=null) { %><div class="tip"><%=cart_list.size() %></div>
+                <%} else { %><div class="tip">0</div>
+                 <%} %>
             </a></li>
         </ul>
         <div class="offcanvas__logo">
@@ -131,7 +133,9 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                 <div class="tip">999+</div>
                             </a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">6</div>
+                                <%if(cart_list!=null) { %><div class="tip"><%=cart_list.size() %></div>
+				                <%} else { %><div class="tip">0</div>
+				                 <%} %>
                             </a></li>
                         </ul>
                     </div>
@@ -181,9 +185,9 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                 	int total = 0;
                                 if(cart_list != null) for (int i = 0; i<cart_list.size(); i++) { total = cart_list.get(i).getC_price() * cart_list.get(i).getC_count();%>
                                     <td class="cart__product__item">
-                                        <img src="<%=cart_list.get(i).getC_imgpath() %>" alt="" style='width:90px;'>
+                                        <img src="<%=cart_list.get(i).getC_imgpath() %>" alt="" style='width:90px;' onclick="location.href='product-details.jsp?g_num=<%=cart_list.get(i).getG_num()%>'">
                                         <div class="cart__product__item__title">
-                                            <h6><%=cart_list.get(i).getC_name() %></h6>
+                                            <h6><a href="product-details.jsp?g_num=<%=cart_list.get(i).getG_num()%>"><%=cart_list.get(i).getC_name() %></a></h6>
                                             <div class="rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -216,7 +220,13 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                         <a href="#">Continue Shopping</a>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-3 col-sm-3">
+	                <div class="cart__btn update__btn">
+                        <a href="CartDropService"> Drop cart</a>
+                    </div>
+	            </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    
                     <div class="cart__btn update__btn">
                         <a onclick=""><span class="icon_loading"></span> Update cart</a>
                     </div>

@@ -45,25 +45,33 @@ public class cartDAO {
 			e.printStackTrace();
 		}
 	}
-
-	public int insert(cartDTO dto) { // 상품 등록
+	public cartDTO check(cartDTO dto) {
 		conn();
+		
+		String sql = "SELECT * FROM shop_cart WHERE m_num = ? AND g_num = ?";
+		cartDTO alreadydto = null; 
 		try {
-			String sql = "INSERT INTO shop_cart VALUES(?, ?, ?)";
-
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getM_num());
 			psmt.setInt(2, dto.getG_num());
-			psmt.setInt(3, dto.getC_count());
-			cnt = psmt.executeUpdate();
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				int m_num = rs.getInt(1);
+				int g_num = rs.getInt(2);
+				int g_count =  rs.getInt(3);
+				
+				alreadydto = new cartDTO(m_num, g_num, g_count);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return cnt;
-
+		return alreadydto;
 	}
 	
 	public int update(cartDTO dto) {
@@ -87,6 +95,32 @@ public class cartDAO {
 		
 		return cnt;
 	}
+	
+	public int insert(cartDTO dto) { // 상품 등록
+		cartDTO check = check(dto);
+		conn();
+		if(check==null) {
+			try {
+				String sql = "INSERT INTO shop_cart VALUES(?, ?, ?)";
+	
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, dto.getM_num());
+				psmt.setInt(2, dto.getG_num());
+				psmt.setInt(3, dto.getC_count());
+				cnt = psmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+		} else {
+			check.setC_count(check.getC_count()+dto.getC_count());
+			update(check);
+		}
+		return cnt;
+
+	}
 	public int delete(cartDTO dto) { // 상품 등록
 		conn();
 		try {
@@ -95,6 +129,23 @@ public class cartDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getM_num());
 			psmt.setInt(2, dto.getG_num());
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+
+	}
+	public int drop(int mnum) { // 상품 등록
+		conn();
+		try {
+			String sql = "DELETE FROM shop_cart WHERE m_num=?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, mnum);
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -92,7 +92,9 @@
                 <div class="tip">2</div>
             </a></li>
             <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
+                <%if(cart_list!=null) { %><div class="tip"><%=cart_list.size() %></div>
+                <%} else { %><div class="tip">0</div>
+                 <%} %>
             </a></li>
         </ul>
         <div class="offcanvas__logo">
