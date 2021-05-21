@@ -1,3 +1,5 @@
+<%@page import="com.cart.cartDTO"%>
+<%@page import="com.cart.cartDAO"%>
 <%@page import="com.member.memberDTO"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -80,6 +82,12 @@
 <%
 	memberDTO info = (memberDTO)session.getAttribute("info");
 
+	cartDAO cartdao = new cartDAO();
+	ArrayList<cartDTO> cart_list = null;
+	if(info!=null) {
+		cart_list = cartdao.select_cart(info.getNum());
+	}
+
 	/* arraylist형인 apron_list받아옴. 일단 null */
 	ArrayList<goodsDTO> apron_list = null;
 	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
@@ -114,12 +122,13 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="#"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
+            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+                 <%if(cart_list!=null) { %>
+                      <div class="tip"><%=cart_list.size() %></div>
+			     <%} else { %>
+				      <div class="tip">0</div>
+				 <%} %>
+             </a></li>
         </ul>
         <div class="offcanvas__logo">
             <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
@@ -154,7 +163,7 @@
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li class="active"><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
-                            <li><a href="./product-details.html">주문제작</a></li>
+                            <!-- <li><a href="./product-details.html">주문제작</a></li> -->
                             <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
                                     <li><a href="./shop-cart.jsp">Shop Cart</a></li>
@@ -177,12 +186,13 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">999+</div>
-                            </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">6</div>
-                            </a></li>
+                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+                				 <%if(cart_list!=null) { %>
+                      				<div class="tip"><%=cart_list.size() %></div>
+			     				<%} else { %>
+				      				<div class="tip">0</div>
+				 				<%} %>
+             				</a></li>
                         </ul>
                     </div>
                 </div>

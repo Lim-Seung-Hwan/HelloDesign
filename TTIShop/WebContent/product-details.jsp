@@ -1,3 +1,5 @@
+<%@page import="com.cart.cartDTO"%>
+<%@page import="com.cart.cartDAO"%>
 <%@page import="com.member.memberDTO"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -13,6 +15,11 @@
 	goodsDTO data = gdao.details(g_num);
 	String cat = data.getCategory();
 	
+	cartDAO cartdao = new cartDAO();
+	ArrayList<cartDTO> cart_list = null;
+	if(info!=null) {
+		cart_list = cartdao.select_cart(info.getNum());
+	} 
 	
 %>
 <html lang="zxx">
@@ -57,11 +64,12 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="#"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
+            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+                 <%if(cart_list!=null) { %>
+            <div class="tip"><%=cart_list.size() %></div>
+			     <%} else { %>
+			<div class="tip">0</div>
+				<%} %>
             </a></li>
         </ul>
         <div class="offcanvas__logo">
@@ -97,7 +105,7 @@
                             <li <%if(cat.equals("eco")) { %> class="active"<%} %>><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li <%if(cat.equals("apron")) { %> class="active"<%} %>><a href="./apron.jsp">APRON</a></li>
                             <li <%if(cat.equals("chair")) { %> class="active"<%} %>><a href="./chair.jsp">CHAIR</a></li>
-                            <li><a href="./product-details.html">주문제작</a></li>
+                            <!-- <li><a href="./product-details.html">주문제작</a></li> -->
                             <li><a href="#">MYPAGE</a>
                             <ul class="dropdown">
                                     <li><a href="./shop-cart.jsp">Shop Cart</a></li>
@@ -108,7 +116,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__right">
+                     <div class="header__right">
                         <div class="header__right__auth">
                         <%if(info !=null) { %>
                         	<a href="./update.jsp">회원정보변경</a>
@@ -120,14 +128,15 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">999+</div>
-                            </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">6</div>
-                            </a></li>
+                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+                 				<%if(cart_list!=null) { %>
+                      				<div class="tip"><%=cart_list.size() %></div>
+			     				<%} else { %>
+				      				<div class="tip">0</div>
+								<%} %>
+             				</a></li>
                         </ul>
-                    </div>
+                       </div>
                 </div>
             </div>
             <div class="canvas__open">

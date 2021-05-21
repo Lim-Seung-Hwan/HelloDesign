@@ -1,3 +1,5 @@
+<%@page import="com.cart.cartDTO"%>
+<%@page import="com.cart.cartDAO"%>
 <%@page import="com.member.memberDTO"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
@@ -50,6 +52,12 @@
 		if(info==null){
 			response.sendRedirect("login.jsp?trying=0");
 		}
+		
+		cartDAO cartdao = new cartDAO();
+		ArrayList<cartDTO> cart_list = null;
+		if(info!=null) {
+			cart_list = cartdao.select_cart(info.getNum());
+		} 
 	%>
 
     <!-- Page Preloder -->
@@ -63,12 +71,13 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="#"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
+            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+                 <%if(cart_list!=null) { %>
+                      	<div class="tip"><%=cart_list.size() %></div>
+			     <%} else { %>
+				      	<div class="tip">0</div>
+				 <%} %>
+             </a></li>
         </ul>
         <div class="offcanvas__logo">
             <a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
@@ -126,11 +135,12 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">999+</div>
-                            </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">6</div>
+                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+                                <%if(cart_list!=null) { %>
+                                	<div class="tip"><%=cart_list.size() %></div>
+				                <%} else { %>
+				                	<div class="tip">0</div>
+				                 <%} %>
                             </a></li>
                         </ul>
                     </div>

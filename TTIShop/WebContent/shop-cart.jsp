@@ -77,7 +77,7 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
             <li><a href="#"><span class="icon_heart_alt"></span>
                 <div class="tip">2</div>
             </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
+            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
                 <%if(cart_list!=null) { %><div class="tip"><%=cart_list.size() %></div>
                 <%} else { %><div class="tip">0</div>
                  <%} %>
@@ -124,17 +124,21 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="./login.jsp">Login</a>
-                            <a href="./join.jsp">Join</a>
+                        <%if(info !=null) { %>
+			             <a href="./update.jsp">회원정보변경</a>
+			             <a href="./LogoutService">Logout</a>
+			             <%}else{%>
+			             <a href="./login.jsp">Login</a>
+			             <a href="./join.jsp">Join</a>
+			             <%} %>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">999+</div>
-                            </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <%if(cart_list!=null) { %><div class="tip"><%=cart_list.size() %></div>
-				                <%} else { %><div class="tip">0</div>
+                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+                                <%if(cart_list!=null) { %>
+                                	<div class="tip"><%=cart_list.size() %></div>
+				                <%} else { %>
+				                	<div class="tip">0</div>
 				                 <%} %>
                             </a></li>
                         </ul>
@@ -188,13 +192,6 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                         <img src="<%=cart_list.get(i).getC_imgpath() %>" alt="" style='width:90px;' onclick="location.href='product-details.jsp?g_num=<%=cart_list.get(i).getG_num()%>'">
                                         <div class="cart__product__item__title">
                                             <h6><a href="product-details.jsp?g_num=<%=cart_list.get(i).getG_num()%>"><%=cart_list.get(i).getC_name() %></a></h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
                                         </div>
                                     </td>
                                     <td class="cart__price"><%=cart_list.get(i).getC_price() %> 원</td>
