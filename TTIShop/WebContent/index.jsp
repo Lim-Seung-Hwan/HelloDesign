@@ -1,3 +1,5 @@
+<%@page import="com.cart.cartDTO"%>
+<%@page import="com.cart.cartDAO"%>
 <%@page import="com.member.memberDTO"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
@@ -37,6 +39,14 @@
 
 	<%
 		memberDTO info=(memberDTO)session.getAttribute("info");
+
+	
+		cartDAO cartdao = new cartDAO();
+		ArrayList<cartDTO> cart_list = null;
+		if(info!=null) {
+			cart_list = cartdao.select_cart(info.getNum());
+		} 
+
 	%>
 
     <!-- Page Preloder -->
@@ -113,11 +123,16 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">999+</div>
-                            </a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span>
-                                <div class="tip">6</div>
+                            <li><a href="./shop=cart.jsp"><span class="icon_bag_alt"></span>
+                            <%if(info !=null) { %>
+                            	<div class="tip">0</div>
+                            <%}else{%>
+                                <%if(cart_list!=null){ %>
+                                	<div calss="tip"><%=cart_list.size() %></div>
+                                <%}else{ %>
+                                     <div class="tip">0</div>
+                                <%} %>
+                             <%} %>
                             </a></li>
                         </ul>
                     </div>
