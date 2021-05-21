@@ -14,7 +14,7 @@ public class memberDAO {
 	memberDTO info = null;
 	
 
-	public void conn() {
+	public void conn() { //DB 연결
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -23,13 +23,11 @@ public class memberDAO {
 
 			conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}
 
-	public void close() {
+	public void close() { //DB 닫기
 		try {
 			if (psmt != null)
 				psmt.close();
@@ -38,12 +36,11 @@ public class memberDAO {
 			if (rs != null)
 				rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public int join(memberDTO mdto) {
+	public int join(memberDTO mdto) { //가입
 		conn();
 		try {
 			String sql = "INSERT INTO shop_member VALUES(shop_member_num_seq.NEXTVAL, ?, ?, ?, ?, ?)";
@@ -56,7 +53,6 @@ public class memberDAO {
 			psmt.setString(5, mdto.getPhone());
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -65,7 +61,7 @@ public class memberDAO {
 
 	}
 	
-	public memberDTO login(memberDTO dto) {
+	public memberDTO login(memberDTO dto) { //로그인 
 		conn();
 		
 		String sql = "SELECT * FROM shop_member WHERE m_id = ? AND m_pw = ?";
@@ -88,7 +84,6 @@ public class memberDAO {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -96,7 +91,7 @@ public class memberDAO {
 		return loginDto;
 	}
 	
-	public int update(memberDTO dto) {
+	public int update(memberDTO dto) { //정보수정
 		conn();
 		try {
 			
@@ -111,7 +106,6 @@ public class memberDAO {
 			psmt.setString(5, dto.getId());
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();

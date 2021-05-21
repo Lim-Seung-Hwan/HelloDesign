@@ -24,7 +24,6 @@ public class goodsDAO {
 
 			conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -39,7 +38,6 @@ public class goodsDAO {
 			if (rs != null)
 				rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -58,7 +56,7 @@ public class goodsDAO {
 			psmt.setString(6, gdto.getCategory());
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();
@@ -83,7 +81,7 @@ public class goodsDAO {
 			psmt.setInt(7, dto.getNum());
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();
@@ -116,7 +114,7 @@ public class goodsDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();
@@ -153,7 +151,7 @@ public class goodsDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();
@@ -190,7 +188,7 @@ public class goodsDAO {
 				}
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+	 
 				e.printStackTrace();
 			} finally {
 				close();
@@ -227,7 +225,7 @@ public class goodsDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();
@@ -264,7 +262,7 @@ public class goodsDAO {
 				}
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+	 
 				e.printStackTrace();
 			} finally {
 				close();
@@ -301,7 +299,7 @@ public class goodsDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();
@@ -338,7 +336,7 @@ public class goodsDAO {
 				}
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+	 
 				e.printStackTrace();
 			} finally {
 				close();
@@ -374,7 +372,7 @@ public class goodsDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();
@@ -410,7 +408,7 @@ public class goodsDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+ 
 			e.printStackTrace();
 		} finally {
 			close();

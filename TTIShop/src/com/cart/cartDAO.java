@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.member.memberDTO;
-
 
 public class cartDAO {
 	Connection conn = null;
@@ -26,7 +24,6 @@ public class cartDAO {
 
 			conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -41,11 +38,10 @@ public class cartDAO {
 			if (rs != null)
 				rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public cartDTO check(cartDTO dto) {
+	public cartDTO check(cartDTO dto) { // 중복체크
 		conn();
 		
 		String sql = "SELECT * FROM shop_cart WHERE m_num = ? AND g_num = ?";
@@ -66,7 +62,6 @@ public class cartDAO {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -74,7 +69,7 @@ public class cartDAO {
 		return alreadydto;
 	}
 	
-	public int update(cartDTO dto) {
+	public int update(cartDTO dto) { // 갯수 수정
 		conn();
 		try {
 			
@@ -87,7 +82,6 @@ public class cartDAO {
 			psmt.setInt(3, dto.getG_num());
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -96,7 +90,7 @@ public class cartDAO {
 		return cnt;
 	}
 	
-	public int insert(cartDTO dto) { // 상품 등록
+	public int insert(cartDTO dto) { // 장바구니에 상품 추가
 		cartDTO check = check(dto);
 		conn();
 		if(check==null) {
@@ -109,7 +103,6 @@ public class cartDAO {
 				psmt.setInt(3, dto.getC_count());
 				cnt = psmt.executeUpdate();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
 				close();
@@ -121,7 +114,7 @@ public class cartDAO {
 		return cnt;
 
 	}
-	public int delete(cartDTO dto) { // 상품 등록
+	public int delete(cartDTO dto) { // 장바구니 상품 삭제
 		conn();
 		try {
 			String sql = "DELETE FROM shop_cart WHERE m_num=? AND g_num=?";
@@ -131,7 +124,6 @@ public class cartDAO {
 			psmt.setInt(2, dto.getG_num());
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -139,7 +131,7 @@ public class cartDAO {
 		return cnt;
 
 	}
-	public int drop(int mnum) { // 상품 등록
+	public int drop(int mnum) { // 장바구니 비우기
 		conn();
 		try {
 			String sql = "DELETE FROM shop_cart WHERE m_num=?";
@@ -148,7 +140,6 @@ public class cartDAO {
 			psmt.setInt(1, mnum);
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -159,7 +150,7 @@ public class cartDAO {
 
 
 	
-	/*상품 목록 표시*/
+	/*장바구니 표시*/
 	public ArrayList<cartDTO> select_cart(int num) {
 
 		conn();
@@ -184,7 +175,6 @@ public class cartDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
