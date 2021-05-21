@@ -251,8 +251,8 @@
                                         </li>
                                         <%int sum = 0;
                                         if(info!=null) for (int i=0; i<cart_list.size(); i++){%>
-                                        <li><%=cart_list.get(i).getC_name()%> <span><%=cart_list.get(i).getC_price() %></span></li>
-                                        <% sum += cart_list.get(i).getC_price(); } %>
+                                        <li><%=cart_list.get(i).getC_name()%>: <%=cart_list.get(i).getC_count() %>개 <span><%=cart_list.get(i).getC_price()*cart_list.get(i).getC_count() %></span></li>
+                                        <% sum += cart_list.get(i).getC_price() * cart_list.get(i).getC_count(); } %>
                                     </ul>
                                 </div>
                                 <div class="checkout__order__total">
