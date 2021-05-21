@@ -106,6 +106,7 @@
                             <ul class="dropdown">
                                     <li><a href="./shop-cart.jsp">Shop Cart</a></li>
                                     <li><a href="./checkout.jsp">Checkout</a></li>
+                                    <li><a href="./buy.jsp">buy</a></li>
                             </ul>
                             </li>
                         </ul>

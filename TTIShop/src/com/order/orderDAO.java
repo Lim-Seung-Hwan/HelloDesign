@@ -90,7 +90,9 @@ public class orderDAO {
 
 		try {
 
-			String sql = "SELECT o.* FROM shop_goods g, shop_member m, shop_order o WHERE o.m_num=m.m_num AND o.g_num=g.g_num AND m.m_num=?";
+			String sql = "SELECT o.*, g.g_price, g.g_name, g.g_img_path"
+					+ " FROM shop_goods g, shop_member m, shop_order o "
+					+ "WHERE o.m_num=m.m_num AND o.g_num=g.g_num AND m.m_num=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
 			rs = psmt.executeQuery();
@@ -103,8 +105,12 @@ public class orderDAO {
 				String o_way = rs.getString(6);
 				String o_date = rs.getString(7);
 				int m_num = rs.getInt(8);
+				int o_count = rs.getInt(9);
+				int g_price = rs.getInt(10);
+				String g_name = rs.getString(11);
+				String g_img_path = rs.getString(12);
 
-				info = new orderDTO(o_num, o_address, o_name, o_phone, g_num, o_way, o_date, m_num);
+				info = new orderDTO(o_num, o_address, o_name, o_phone, g_num, o_way, o_date, m_num, o_count, g_price, g_name,g_img_path);
 
 				cart_list.add(info);
 			}
