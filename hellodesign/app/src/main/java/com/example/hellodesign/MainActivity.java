@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         web = findViewById(R.id.wv);
         WebSettings webSettings = web.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         web.setWebViewClient(new WebViewClient());
         web.loadUrl("http://digiwb.softether.net:8085/TTIShop/index.jsp");
 
