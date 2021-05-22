@@ -74,6 +74,9 @@
 		response.sendRedirect("loginFail.jsp?trying=0");
 	} else {
 		cart_list = cartdao.select_cart(info.getNum());
+		if(cart_list.size()==0) {
+			out.print("<script>alert('상품을 먼저 장바구니에 담아주세요.'); location.href='index.jsp';</script>");
+		}
 	}
 	
 %>
@@ -243,8 +246,8 @@
                                 <%
                                 ArrayList<String> myItem = new ArrayList<String>(); 
                                 ArrayList<String> myItemCount = new ArrayList<String>(); 
-                                for (int i=0; i<cart_list.size(); i++){ myItem.add(cart_list.get(i).getG_num() + ";"); }
-                                for (int i=0; i<cart_list.size(); i++){ myItemCount.add(cart_list.get(i).getC_count() + ";"); }
+                                if(cart_list!=null){for (int i=0; i<cart_list.size(); i++){ myItem.add(cart_list.get(i).getG_num() + ";"); }}
+                                if(cart_list!=null){for (int i=0; i<cart_list.size(); i++){ myItemCount.add(cart_list.get(i).getC_count() + ";"); }}
                                 StringBuilder stringBuilder = new StringBuilder();
                                 for (String item : myItem) { stringBuilder.append(item); }
                                 String myItemProcess = stringBuilder.toString();
