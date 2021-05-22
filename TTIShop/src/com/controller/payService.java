@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.cart.cartDAO;
+import com.cart.cartDTO;
 import com.member.memberDTO;
 import com.order.orderDAO;
 import com.order.orderDTO;
@@ -36,6 +38,8 @@ public class payService extends HttpServlet {
 		String[] product_count = request.getParameter("product_count").split(";");
 		orderDAO odao = new orderDAO();
 		orderDTO odto = null;
+		cartDAO cdao = new cartDAO();
+		cartDTO cdto = null;
 		PrintWriter out = response.getWriter();
 		
 		if ("1111-2222-3333-4444".equals(card_number)&&"1234".equals(card_password)) {
@@ -48,6 +52,8 @@ public class payService extends HttpServlet {
 				int cnt = odao.insert(odto);
 				if(cnt > 0) {
 					System.out.println("추가됨");
+					cdto = new cartDTO(mnum, pronum);
+					cdao.delete(cdto);
 				}
 				else {
 					System.out.println("실패!");
