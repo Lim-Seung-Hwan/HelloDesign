@@ -197,7 +197,7 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                     <td class="cart__price"><%=cart_list.get(i).getC_price() %> 원</td>
                                     <td class="cart__quantity">
                                         <div class="pro-qty">
-                                            <input type="text" name="count" class="count" value="<%=cart_list.get(i).getC_count() %>" readonly>
+                                            <input type="text" name="count" class="count" value="<%=cart_list.get(i).getC_count() %>">
                                         </div>
                                     </td>
                                     <td class="cart__total"><%=total %> 원</td>
@@ -217,17 +217,17 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                         <a href="#">Continue Shopping</a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-lg-6 col-md-6 col-sm-6">
 	                <div class="cart__btn update__btn">
                         <a href="CartDropService"> Drop cart</a>
                     </div>
 	            </div>
-                <div class="col-lg-3 col-md-3 col-sm-3">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-3">
                     
                     <div class="cart__btn update__btn">
                         <a onclick=""><span class="icon_loading"></span> Update cart</a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-lg-6">
