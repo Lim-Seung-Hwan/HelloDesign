@@ -59,6 +59,16 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
       var value = document.getElementsByClassName("count").item(num).value;
       location.href='CartUpdateService?gnum='+ gnum +'&count='+value;
     }
+    function check() {
+    	var cform = document.updateForm
+  		cform.action="CartUpdateGroupService";
+  		cform.method="post";
+    	document.getElementsByName('product_countAll').item(0).value = "";
+        for(var i = 0; i < document.getElementsByName('count').length; i++) {
+        	document.getElementsByName('product_countAll').item(0).value = document.getElementsByName('product_countAll').item(0).value + document.getElementsByName('count').item(i).value + ";"
+        }
+        cform.submit();
+    }
     </script>
 </head>
 
@@ -187,7 +197,10 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                 <tr>
                                 <% int price = 0;
                                 	int total = 0;
-                                if(cart_list != null) for (int i = 0; i<cart_list.size(); i++) { total = cart_list.get(i).getC_price() * cart_list.get(i).getC_count();%>
+                                	ArrayList<String> myItem = new ArrayList<String>(); 
+                                if(cart_list != null) for (int i = 0; i<cart_list.size(); i++) {
+                                	myItem.add(cart_list.get(i).getG_num() + ";");
+                                	total = cart_list.get(i).getC_price() * cart_list.get(i).getC_count();%>
                                     <td class="cart__product__item">
                                         <img src="<%=cart_list.get(i).getC_imgpath() %>" alt="" style='width:90px;' onclick="location.href='product-details.jsp?g_num=<%=cart_list.get(i).getG_num()%>'">
                                         <div class="cart__product__item__title">
@@ -205,7 +218,11 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                     <a><span onclick="updateSubmit(<%=i%>,<%=cart_list.get(i).getG_num()%>)"><i class="fa fa-check-circle-o"></i></span></a>
                                     </td>
                                 </tr>
-                                <% price += total; } %>
+                                <% price += total; } 
+                                StringBuilder stringBuilder = new StringBuilder();
+                                for (String item : myItem) { stringBuilder.append(item); }
+                                String myItemProcess = stringBuilder.toString();
+                                %>
                             </tbody>
                         </table>
                     </div>
@@ -217,17 +234,20 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                         <a href="#">Continue Shopping</a>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-3 col-sm-3">
 	                <div class="cart__btn update__btn">
                         <a href="CartDropService"> Drop cart</a>
                     </div>
 	            </div>
-                <!-- <div class="col-lg-3 col-md-3 col-sm-3">
-                    
+                <div class="col-lg-3 col-md-3 col-sm-3">
                     <div class="cart__btn update__btn">
-                        <a onclick=""><span class="icon_loading"></span> Update cart</a>
+                    <form name="updateForm" style="display:none">
+                    	<input type="text" name="product_no" value="<%=myItemProcess%>" style="display:none">
+                   		<input type="text" name="product_countAll" id="product_countAll" style="display:none">
+                    </form>
+                        <a onclick="check()"><span class="icon_loading"></span> Update cart</a>
                     </div>
-                </div> -->
+                </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
