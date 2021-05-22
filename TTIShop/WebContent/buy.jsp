@@ -197,7 +197,7 @@ if(info!=null) {
                                         </div>
                                     </td>
                    <!-- 구매 수량 -->      <td class="cart__quantity">
-                                        <div class="pro-qty">
+                                        <div class="pro-qty2">
                                             <input type="text" name="count" class="count" value="<%=order_list.get(i).getO_count() %>" readonly>
                                         </div>
                                     </td>

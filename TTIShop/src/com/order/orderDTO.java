@@ -30,6 +30,17 @@ public class orderDTO {
 		this.g_name = g_name;
 		this.g_img_path = g_img_path;
 	}
+	public orderDTO(String o_address, String o_name, String o_phone, int g_num, String o_way,
+			int m_num ,int o_count) {
+		super();
+		this.o_address = o_address;
+		this.o_name = o_name;
+		this.o_phone = o_phone;
+		this.g_num = g_num;
+		this.o_way = o_way;
+		this.m_num = m_num;
+		this.o_count=o_count;
+	}
 	public int getO_num() {
 		return o_num;
 	}

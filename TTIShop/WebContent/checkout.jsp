@@ -22,16 +22,16 @@
   	 	var chkbox = document.checkout__form.check_order.checked;
 		if(chkbox){
 			var namecheck = document.checkout__form.name.value == "";
-			var addrcheck = document.checkout__form.name.value == "";
-			var detailaddrcheck = document.checkout__form.name.value == "";
-			var phonecheck = document.checkout__form.name.value == "";
+			var addrcheck = document.checkout__form.addr.value == "";
+			var detailaddrcheck = document.checkout__form.detail_addr.value == "";
+			var phonecheck = document.checkout__form.phone.value == "";
 			if(!namecheck && !addrcheck && !detailaddrcheck && !phonecheck) {
-				document.cookie = encodeURIComponent("name") + "=" + encodeURIComponent(document.checkout__form.name.value);
-				document.cookie = encodeURIComponent("area") + "=" + encodeURIComponent(document.checkout__form.area.value);
-				document.cookie = encodeURIComponent("addr") + "=" + encodeURIComponent(document.checkout__form.addr.value);
-				document.cookie = encodeURIComponent("detail_addr") + "=" + encodeURIComponent(document.checkout__form.detail_addr.value);
-				document.cookie = encodeURIComponent("phone") + "=" + encodeURIComponent(document.checkout__form.phone.value);
-		  		window.open("HelloDesign_Pay.jsp", "전자결제 신용카드 ", "width=500, height=300, left=100, top=50");
+		  		window.open("", "전자결제 신용카드", "width=500, height=300, left=100, top=50");
+		  		var cform = document.checkout__form
+		  		cform.action="HelloDesign_Pay.jsp";
+		  		cform.method="post";
+		  		cform.target="전자결제 신용카드";
+		  		cform.submit();
 		  	//결제창 넘어가는 파일, 팝업창의 별칭, 팝업창 크기
 			}
 			else {
@@ -240,6 +240,20 @@
                                     <p>전화번호 <span>*</span></p>
                                     <input type="text" name="phone">
                                 </div>
+                                <%
+                                ArrayList<String> myItem = new ArrayList<String>(); 
+                                ArrayList<String> myItemCount = new ArrayList<String>(); 
+                                for (int i=0; i<cart_list.size(); i++){ myItem.add(cart_list.get(i).getG_num() + ";"); }
+                                for (int i=0; i<cart_list.size(); i++){ myItemCount.add(cart_list.get(i).getC_count() + ";"); }
+                                StringBuilder stringBuilder = new StringBuilder();
+                                for (String item : myItem) { stringBuilder.append(item); }
+                                String myItemProcess = stringBuilder.toString();
+                                stringBuilder = new StringBuilder();
+                                for (String item : myItemCount) { stringBuilder.append(item); }
+                                String myItemCountProcess = stringBuilder.toString();
+                                %>
+                                <input type="text" name="product_no" value="<%=myItemProcess%>" style="display:none">
+                                <input type="text" name="product_count" value="<%=myItemCountProcess%>" style="display:none">
                             </div>
                             </div>
                         </div>

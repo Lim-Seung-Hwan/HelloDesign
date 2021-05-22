@@ -63,7 +63,7 @@ public class orderDAO {
 	public int insert(orderDTO odto) { // 상품 구매
 		conn();
 		try {
-			String sql = "INSERT INTO shop_order VALUES(shop_order_num_seq.NEXTVAL, ?, ?, ?, ?, ?, to_char(sysdate, 'YYYY/MM/DD AM HH:MI'))";
+			String sql = "INSERT INTO shop_order VALUES(shop_order_num_seq.NEXTVAL, ?, ?, ?, ?, ?, to_char(sysdate, 'YYYY/MM/DD AM HH:MI'), ?, ?)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, odto.getO_address());
@@ -71,6 +71,8 @@ public class orderDAO {
 			psmt.setString(3, odto.getO_phone());
 			psmt.setInt(4, odto.getG_num());
 			psmt.setString(5, odto.getO_way());
+			psmt.setInt(6, odto.getM_num());
+			psmt.setInt(7, odto.getO_count());
 			cnt = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

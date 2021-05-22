@@ -1758,6 +1758,14 @@ ol {
 	overflow: hidden;
 	display: inline-block;
 }
+.pro-qty2 {
+	height: 50px;
+	border: 1px solid #ebebeb;
+	border-radius: 50px;
+	padding: 0 20px;
+	overflow: hidden;
+	display: inline-block;
+}
 
 .pro-qty .qtybtn {
 	font-size: 14px;
@@ -1769,6 +1777,17 @@ ol {
 }
 
 .pro-qty input {
+	font-size: 14px;
+	color: #666666;
+	font-weight: 500;
+	border: none;
+	float: left;
+	width: 84px;
+	text-align: center;
+	height: 48px;
+}
+
+.pro-qty2 input {
 	font-size: 14px;
 	color: #666666;
 	font-weight: 500;
