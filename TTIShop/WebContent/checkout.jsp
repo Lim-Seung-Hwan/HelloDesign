@@ -23,9 +23,8 @@
 		if(chkbox){
 			var namecheck = document.checkout__form.name.value == "";
 			var addrcheck = document.checkout__form.addr.value == "";
-			var detailaddrcheck = document.checkout__form.detail_addr.value == "";
 			var phonecheck = document.checkout__form.phone.value == "";
-			if(!namecheck && !addrcheck && !detailaddrcheck && !phonecheck) {
+			if(!namecheck && !addrcheck && !phonecheck) {
 		  		window.open("", "전자결제 신용카드", "width=500, height=300, left=100, top=50");
 		  		var cform = document.checkout__form
 		  		cform.action="HelloDesign_Pay.jsp";
