@@ -93,46 +93,38 @@
                         <a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-7">
+                <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.jsp">HOME</a></li>
                             <li><a href="./mat.jsp">MAT</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
                            <!--  <li><a href="#">주문제작</a></li>  -->
-                            <li><a href="#">MYPAGE</a>
-                            <ul class="dropdown">
-                                    <li><a href="./shop-cart.jsp">Shop Cart</a></li>
-                                    <li><a href="./checkout.jsp">Checkout</a></li>
-                                    <li><a href="./buy.jsp">buy</a></li>
-                            </ul>
-                            </li>
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="header__right">
                         <div class="header__right__auth">
                         <%if(info !=null) { %>
-                        	<a href="./update.jsp">회원정보변경</a>
-                            <a href="./LogoutService">Logout</a>
+	                        <ul class="header__right__widget">
+	                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+	                                <%if(cart_list!=null) { %>
+	                                	<div class="tip"><%=cart_list.size() %></div>
+					                <%} else { %>
+					                	<div class="tip">0</div>
+					                 <%} %>
+	                            </a></li>
+	                        </ul>
+                        	<a href="./update.jsp">MY PAGE</a>
+                            <a href="./LogoutService">LOGOUT</a>
                         	<%}else{%>
-                            <a href="./login.jsp">Login</a>
-             				<a href="./join.jsp">Join</a>
+                            <a href="./login.jsp">LOGIN</a>
+             				<a href="./join.jsp">JOIN</a>
                             <%} %>
                         </div>
-                        <ul class="header__right__widget">
-                            <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
-                                <%if(cart_list!=null) { %>
-                                	<div class="tip"><%=cart_list.size() %></div>
-				                <%} else { %>
-				                	<div class="tip">0</div>
-				                 <%} %>
-                            </a></li>
-                        </ul>
+                        
                         
                     </div>
                 </div>
@@ -147,91 +139,19 @@
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 p-0">
-                    <div class="categories__item categories__large__item set-bg"
-                    data-setbg="img/moving.gif">
-                    <div class="categories__text">
-                        <h1>명품 디자인<br> 주문제작</h1>
-                        <p>저희 제품은 다릅니다. 디자인부터 디테일까지 ..!!<br>
-                        고객님의 취향대로 주문제작 해드립니다. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="img/categories/category-2.png">
-                            <div class="categories__text">
-                                <h4>Mat</h4>
-                                <p></p>
-                                <a href="./mat.jsp">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="img/categories/category-3.png">
-                            <div class="categories__text">
-                                <h4>Apron</h4>
-                                <p></p>
-                                <a href="./apron.jsp">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0" >
-                        <div class="categories__item set-bg" data-setbg="img/categories/category-4.png">
-                            <div class="categories__text">
-                                <h4>Chair</h4>
-                                <p></p>
-                                <a href="./chair.jsp">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="img/categories/category-5.png">
-                            <div class="categories__text">
-                                <h4>Eco-bag</h4>
-                                <p></p>
-                                <a href="./eco_bag.jsp">Shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+	           <div class="categories__item categories__large__item set-bg">
+	           <div class="categories__text">
+	               <h2>명품가구와 소품, 직접 디자인하세요!</h2>
+	               <p>디자인부터 디테일까지 취향대로 , 때때로는 AI가 만들어준<br>세상 단 하나뿐인 디자인으로 가구/소품을 만들어드립니다!</p>
+	           </div>
+           
         </div>
     </div>
 </section>
 <!-- Categories Section End -->
 
 <br>
-<!-- Discount Section Begin -->
-<section class="discount">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 p-0">
-                <div class="discount__pic">
-                    <img src="img/categories/category-1.gif" alt="       ">
-                </div>
-            </div>
-                            
-            <div class="col-lg-6 p-0">
-                <div class="discount__text">
-                    <div class="discount__text__title">
-                        <span>AI 주문제작 GOODS</span>
-                        <h2>Hello Design</h2>
-                        <h5>made by<span>  AI</span></h5>
-                    </div>
-                    안녕하세요. <br>
-                    저희 Hello Design은 AI가 만들어준<br>
-                    세상 단 하나뿐인 패턴 디자인으로 만든 <br>
-                     Goods를 판매하는 브랜드입니다.<br>
-                    고객님들의 많은 이용 부탁드립니다. <br>
-                   <!--  <a href="#">Shop now</a>  -->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 
