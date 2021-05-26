@@ -25,9 +25,9 @@
 			var addrcheck = document.checkout__form.addr.value == "";
 			var phonecheck = document.checkout__form.phone.value == "";
 			if(!namecheck && !addrcheck && !phonecheck) {
-		  		window.open("", "전자결제 신용카드", "width=500, height=300, left=100, top=50");
+		  		window.open("", "전자결제 신용카드", "width=830, height=600, left=100, top=50");
 		  		var cform = document.checkout__form
-		  		cform.action="HelloDesign_Pay.jsp";
+		  		cform.action="kakaoPay.jsp";
 		  		cform.method="post";
 		  		cform.target="전자결제 신용카드";
 		  		cform.submit();
@@ -127,7 +127,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="./index.jsp">HOME</a></li>
-                            <li><a href="./mat.jsp">MAT</a></li>
+                            <li><a href="./mat.jsp">MUG-CUP</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
@@ -197,7 +197,7 @@
                     here to enter your code.</h6>
                 </div>
             </div> -->
-            <form action="#" class="checkout__form" name="checkout__form">
+            <form action="kakaoPay.jsp" class="checkout__form" name="checkout__form">
                 <div class="row">
                     <div class="col-lg-8">
                         <h5>주문하기</h5>
@@ -278,6 +278,7 @@
                                     <ul>
                                         <!-- <li>Subtotal <span>$ 750.0</span></li> -->
                                         <li>합계 <span> <%= sum %></span></li>
+                                        
                                     </ul>
                                 </div>
                                 <div class="checkout__order__widget">
@@ -287,6 +288,8 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
+                                <!-- <input type = "submit" value="주문하기"> -->
+                                <input name="totalPrice" style="display:none" value="<%=sum%>">
                                 <button type="button" class="site-btn" onclick="showPopup();" />주문하기</button>
                             </div>
                         </div>
