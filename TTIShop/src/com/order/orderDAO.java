@@ -92,9 +92,7 @@ public class orderDAO {
 
 		try {
 
-			String sql = "SELECT o.*, g.g_price, g.g_name, g.g_img_path"
-					+ " FROM shop_goods g, shop_member m, shop_order o "
-					+ "WHERE o.m_num=m.m_num AND o.g_num=g.g_num AND m.m_num=?";
+			String sql = "SELECT o.*, g.g_price, g.g_name, g.g_img_path FROM shop_goods g, shop_member m, shop_order o WHERE o.m_num=m.m_num AND o.g_num=g.g_num AND m.m_num=? order by o_num desc";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
 			rs = psmt.executeQuery();
