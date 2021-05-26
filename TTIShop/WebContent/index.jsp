@@ -15,7 +15,7 @@
 <meta name="keywords" content="Ashion, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Ashion | Template</title>
+<title>Hello | Design</title>
 <!-- Google Font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
@@ -96,10 +96,12 @@
                 <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./mat.jsp">MAT</a></li>
+                        	<li><a href="./index.jsp">HOME</a></li>
+                            <li><a href="./mat.jsp">MUG-CUP</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
+                            <li><a href="./update.jsp">MY PAGE</a></li>
                            <!--  <li><a href="#">주문제작</a></li>  -->
                         </ul>
                     </nav>
