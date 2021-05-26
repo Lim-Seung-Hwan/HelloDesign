@@ -1,3 +1,5 @@
+<%@page import="com.cart.cartDTO"%>
+<%@page import="com.cart.cartDAO"%>
 <%@page import="com.member.memberDTO"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
@@ -33,6 +35,39 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
+<%
+	memberDTO info = (memberDTO)session.getAttribute("info");
+
+	cartDAO cartdao = new cartDAO();
+	ArrayList<cartDTO> cart_list = null;
+	if(info!=null) {
+		cart_list = cartdao.select_cart(info.getNum());
+	}
+
+	/* arraylist형인 chair_list받아옴. 일단 null */
+	ArrayList<goodsDTO> chair_list = null;
+	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
+	Cookie[] cookies = request.getCookies();
+	String tag = null;
+	if(cookies != null && cookies.length > 0)
+	{
+		for(int i = 0; i < cookies.length; i++)
+		{
+			if(cookies[i].getName().equals("tag")) {
+				tag = URLDecoder.decode(cookies[i].getValue(), "utf-8");
+			}
+		}
+	}
+	
+	/* tag를 선택 했는지 안했는지 */
+	if (tag != null) {/* tag를 선택 했을 때 - 선택한 테그에 대한 모든 정보 가져옴*/
+		goodsDAO chairdao = new goodsDAO();
+		chair_list = chairdao.pattern_chair(tag);
+	} else { /* tag를 선택 안 했을 때 - 모든 정보 가져옴 */
+		goodsDAO chairdao = new goodsDAO();
+		chair_list = chairdao.select_chair();
+	}
+%>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -65,39 +100,42 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" style="height:45px"  alt=""></a>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-7">
+                <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.jsp">HOME</a></li>
-                            <li><a href="./mat.jsp">MAT</a></li>
+                            <li><a href="./mug.jsp">MUG-CUP</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
                            <!--  <li><a href="#">주문제작</a></li>  -->
-                            <li><a href="#">MYPAGE</a>
-                            <ul class="dropdown">
-                                    <li><a href="./shop-cart.jsp">Shop Cart</a></li>
-                                    <li><a href="./checkout.jsp">Checkout</a></li>
-                            </ul>
-                            </li>
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="./login.jsp">Login</a>
-                            <a href="./join.jsp">Join</a>
+                        <%if(info !=null) { %>
+	                        <ul class="header__right__widget">
+	                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+	                                <%if(cart_list!=null) { %>
+	                                	<div class="tip"><%=cart_list.size() %></div>
+					                <%} else { %>
+					                	<div class="tip">0</div>
+					                 <%} %>
+	                            </a></li>
+	                        </ul>
+                        	<a href="./mypage.jsp">MY PAGE</a>
+                            <a href="./LogoutService">LOGOUT</a>
+                        	<%}else{%>
+                            <a href="./login.jsp">LOGIN</a>
+             				<a href="./join.jsp">JOIN</a>
+                            <%} %>
                         </div>
-                        <ul class="header__right__widget">
-                            <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
-                                <div class="tip">0</div>
-                            </a></li>
-                        </ul>
+                        
+                        
                     </div>
                 </div>
             </div>

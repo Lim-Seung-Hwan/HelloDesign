@@ -22,7 +22,6 @@
 		var tag = readCookie("tag");
 		autocheck(tag);
 		document.cookie = 'tag=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-		
 	}
 	function autocheck(pos) {
 		if(pos == 'spring') { 
@@ -79,11 +78,18 @@
 </head>
 
 <body>
+
 <%
 	memberDTO info = (memberDTO)session.getAttribute("info");
 
+	cartDAO cartdao = new cartDAO();
+	ArrayList<cartDTO> cart_list = null;
+	if(info!=null) {
+		cart_list = cartdao.select_cart(info.getNum());
+	} 
+
 	/* arraylist형인 apron_list받아옴. 일단 null */
-	ArrayList<goodsDTO> eco_list = null;
+	ArrayList<goodsDTO> mat_list = null;
 	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
 	Cookie[] cookies = request.getCookies();
 	String tag = null;
@@ -99,19 +105,14 @@
 	
 	/* tag를 선택 했는지 안했는지 */
 	if (tag != null) {/* tag를 선택 했을 때 - 선택한 테그에 대한 모든 정보 가져옴*/
-		goodsDAO ecodao = new goodsDAO();
-		eco_list = ecodao.pattern_eco(tag);
+		goodsDAO matdao = new goodsDAO();
+		mat_list = matdao.pattern_mat(tag);
 	} else { /* tag를 선택 안 했을 때 - 모든 정보 가져옴 */
-		goodsDAO ecodao = new goodsDAO();
-		eco_list = ecodao.select_eco();
+		goodsDAO matdao = new goodsDAO();
+		mat_list = matdao.select_mat();
 	}
-	
-	cartDAO cartdao = new cartDAO();
-	ArrayList<cartDTO> cart_list = null;
-	if(info!=null) {
-		cart_list = cartdao.select_cart(info.getNum());
-	} 
 %>
+
 
 <div id="preloder">
         <div class="loader"></div>
@@ -135,7 +136,7 @@
             <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
-       <div class="offcanvas__auth">
+        <div class="offcanvas__auth">
            <%if(info !=null) { %>
              <a href="./mypage.jsp">My Page</a>
              <a href="./LogoutService">Logout</a>
@@ -159,8 +160,8 @@
                 <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./mug.jsp">MUG-CUP</a></li>
-                            <li class="active"><a href="./eco_bag.jsp">ECO-BAG</a></li>
+                            <li class="active"><a href="./mug.jsp">MUG-CUP</a></li>
+                            <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
                            <!--  <li><a href="#">주문제작</a></li>  -->
@@ -206,7 +207,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
-                        <span>에코백</span>
+                        <span>돗자리</span>
                     </div>
                 </div>
             </div>
@@ -224,7 +225,7 @@
                             <div class="section-title">
                                 <h4>pattern</h4>
                             </div>
-                           <!-- 테그마다 클릭할때 실행되는 함수를 지정 -->
+                            <!-- 테그마다 클릭할때 실행되는 함수를 지정 -->
 							<div class="size__list color__list">
 								<label for="spring" onClick="checkboxClick('spring')"> spring <input type="checkbox"
 									id="spring"> <span class="checkmark"></span>
@@ -241,10 +242,10 @@
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="row">
-                    	<%for (int i=0; i<eco_list.size(); i++){%>
+                    	<%for (int i=0; i<mat_list.size(); i++){%>
 	                        <div class="col-lg-4 col-md-6">
 	                            <div class="product__item">
-	                                <div class="product__item__pic set-bg" data-setbg="<%=eco_list.get(i).getImg_path() %>" onClick="location.href='./product-details.jsp?g_num=<%=eco_list.get(i).getNum()%>'">
+	                                <div class="product__item__pic set-bg" data-setbg="<%=mat_list.get(i).getImg_path() %>" onClick="location.href='./product-details.jsp?g_num=<%=mat_list.get(i).getNum()%>'">
 	                                   <!--  <div class="label new">New</div> -->
 	                                    <%-- <ul class="product__hover">
 	                                        <li><a href="<%=mat_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -253,8 +254,8 @@
 	                                    </ul> --%>
 	                                </div>
 	                                <div class="product__item__text">
-	                                    <h6><a href="./product-details.jsp?g_num=<%=eco_list.get(i).getNum()%>"><%= eco_list.get(i).getName() %></a></h6>
-	                                    <div class="product__price"><%= eco_list.get(i).getPrice() %></div>
+	                                    <h6><a href="./product-details.jsp?g_num=<%=mat_list.get(i).getNum()%>"><%= mat_list.get(i).getName() %></a></h6>
+	                                    <div class="product__price"><%= mat_list.get(i).getPrice() %></div>
 	                                </div>
 	                            </div>
 	                        </div>

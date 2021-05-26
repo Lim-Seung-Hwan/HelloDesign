@@ -96,7 +96,7 @@
                 <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./mat.jsp">MUG-CUP</a></li>
+                            <li><a href="./mug.jsp">MUG-CUP</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>

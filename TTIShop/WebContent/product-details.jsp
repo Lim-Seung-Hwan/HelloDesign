@@ -94,49 +94,43 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.jpg" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" style="height:45px"  alt=""></a>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-7">
+                <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.jsp">HOME</a></li>
-                            <li <%if(cat.equals("mat")) { %> class="active"<%} %>><a href="./mat.jsp">MAT</a></li>
-                            <li <%if(cat.equals("eco")) { %> class="active"<%} %>><a href="./eco_bag.jsp">ECO-BAG</a></li>
-                            <li <%if(cat.equals("apron")) { %> class="active"<%} %>><a href="./apron.jsp">APRON</a></li>
-                            <li <%if(cat.equals("chair")) { %> class="active"<%} %>><a href="./chair.jsp">CHAIR</a></li>
-                            <!-- <li><a href="./product-details.html">주문제작</a></li> -->
-                            <li><a href="#">MYPAGE</a>
-                            <ul class="dropdown">
-                                    <li><a href="./shop-cart.jsp">Shop Cart</a></li>
-                                    <li><a href="./checkout.jsp">Checkout</a></li>
-                            </ul>
-                            </li>
+                            <li><a href="./mug.jsp">MUG-CUP</a></li>
+                            <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
+                            <li><a href="./apron.jsp">APRON</a></li>
+                            <li><a href="./chair.jsp">CHAIR</a></li>
+                           <!--  <li><a href="#">주문제작</a></li>  -->
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
-                     <div class="header__right">
+                <div class="col-lg-2">
+                    <div class="header__right">
                         <div class="header__right__auth">
                         <%if(info !=null) { %>
-                        	<a href="./mypage.jsp">My Page</a>
-                            <a href="./LogoutService">Logout</a>
+	                        <ul class="header__right__widget">
+	                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
+	                                <%if(cart_list!=null) { %>
+	                                	<div class="tip"><%=cart_list.size() %></div>
+					                <%} else { %>
+					                	<div class="tip">0</div>
+					                 <%} %>
+	                            </a></li>
+	                        </ul>
+                        	<a href="./mypage.jsp">MY PAGE</a>
+                            <a href="./LogoutService">LOGOUT</a>
                         	<%}else{%>
-                            <a href="./login.jsp">Login</a>
-             				<a href="./join.jsp">Join</a>
+                            <a href="./login.jsp">LOGIN</a>
+             				<a href="./join.jsp">JOIN</a>
                             <%} %>
                         </div>
-                        <ul class="header__right__widget">
-                            <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
-                 				<%if(cart_list!=null) { %>
-                      				<div class="tip"><%=cart_list.size() %></div>
-			     				<%} else { %>
-				      				<div class="tip">0</div>
-								<%} %>
-             				</a></li>
-                        </ul>
-                       </div>
+                        
+                        
+                    </div>
                 </div>
             </div>
             <div class="canvas__open">
