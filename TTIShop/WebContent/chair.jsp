@@ -163,7 +163,7 @@
 					<nav class="header__menu">
 						<ul>
 							<li><a href="./index.jsp">HOME</a></li>
-							<li><a href="./mat.jsp">MAT</a></li>
+							<li><a href="./mat.jsp">MUG-CUP</a></li>
 							<li><a href="./eco_bag.jsp">ECO-BAG</a></li>
 							<li><a href="./apron.jsp">APRON</a></li>
 							<li class="active"><a href="./chair.jsp">CHAIR</a></li>
