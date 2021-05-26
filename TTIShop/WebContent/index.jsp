@@ -117,7 +117,7 @@
 					                 <%} %>
 	                            </a></li>
 	                        </ul>
-                        	<a href="./update.jsp">MY PAGE</a>
+                        	<a href="./mypage.jsp">MY PAGE</a>
                             <a href="./LogoutService">LOGOUT</a>
                         	<%}else{%>
                             <a href="./login.jsp">LOGIN</a>
