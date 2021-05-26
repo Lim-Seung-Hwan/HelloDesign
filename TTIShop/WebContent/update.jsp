@@ -85,7 +85,7 @@
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
            <%if(info !=null) { %>
-             <a href="./update.jsp">회원정보변경</a>
+             <a href="./mypage.jsp">My Page</a>
              <a href="./LogoutService">Logout</a>
              <%}else{%>
              <a href="./login.jsp">Login</a>
@@ -126,7 +126,7 @@
                     <div class="header__right">
                         <div class="header__right__auth">
                         <%if(info !=null) { %>
-			             <a href="./update.jsp">회원정보변경</a>
+			             <a href="./mypage.jsp">My Page</a>
 			             <a href="./LogoutService">Logout</a>
 			             <%}else{%>
 			             <a href="./login.jsp">Login</a>
