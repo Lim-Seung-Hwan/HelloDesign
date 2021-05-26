@@ -69,7 +69,7 @@
              </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
+            <a href="./index.jsp"><img src="img/logo.png" style="height:45px" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
+                        <a href="./index.jsp"><img src="img/logo.png" style="height:45px"  alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7">
@@ -182,6 +182,6 @@
 <script src="js/jquery.slicknav.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.nicescroll.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main2.js"></script>
 </body>
 </html>

@@ -34,10 +34,7 @@ Created: Colorib
     /*------------------
         Background Set
     --------------------*/
-    $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
-    });
+
 
     //Search Switch
     $('.search-switch').on('click', function () {
