@@ -155,7 +155,7 @@ if(info!=null) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
+                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a> <a href="./mypage.jsp">My Page</a>
                         <span>buy</span>
                     </div>
                 </div>

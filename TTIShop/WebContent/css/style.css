@@ -3732,3 +3732,30 @@ ol {
 		font-size: 24px;
 	}
 }
+
+.mp_button {
+	cursor:default;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid gray;
+    border-radius: 0.8em;
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+
+.mp_img {
+	height: 64px;
+	margin-right: 15px;
+}
+
+.mp_list {
+	display: flex;
+    justify-content: center;
+}
+
+
+.mp_button > span {
+	font-size: 11px;
+}

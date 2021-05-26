@@ -159,7 +159,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
+                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a> <a href="./mypage.jsp">My Page</a>
                         <span>Update</span>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
     <!-- Contact Section Begin -->
     <section class="contact spad" style="
     padding-bottom: 200px;
-">
+">		
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

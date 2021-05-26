@@ -346,75 +346,145 @@ public class goodsDAO {
 		}
 
 	// 의자 정보 가져오기(전부)
-	public ArrayList<goodsDTO> select_chair() {
+		public ArrayList<goodsDTO> select_chair() {
 
-		conn();
+			conn();
 
-		ArrayList<goodsDTO> chair_list = new ArrayList<goodsDTO>();
+			ArrayList<goodsDTO> chair_list = new ArrayList<goodsDTO>();
 
-		try {
+			try {
 
-			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='chair'";
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='chair'";
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
 
-			while (rs.next()) {
-				int num = rs.getInt(1);
-				int price = rs.getInt(2);
-				String name = rs.getString(3);
-				String img_path = rs.getString(4);
-				String tag = rs.getString(5);
+				while (rs.next()) {
+					int num = rs.getInt(1);
+					int price = rs.getInt(2);
+					String name = rs.getString(3);
+					String img_path = rs.getString(4);
+					String tag = rs.getString(5);
 
-				ginfo = new goodsDTO(num, price, name, img_path, tag, "chair");
+					ginfo = new goodsDTO(num, price, name, img_path, tag, "chair");
 
-				chair_list.add(ginfo);
-				System.out.println(ginfo);
+					chair_list.add(ginfo);
+					System.out.println(ginfo);
+				}
+
+			} catch (SQLException e) {
+	 
+				e.printStackTrace();
+			} finally {
+				close();
 			}
 
-		} catch (SQLException e) {
- 
-			e.printStackTrace();
-		} finally {
-			close();
+			return chair_list;
 		}
+		// 의자 정보 가져오기(테그)
+		public ArrayList<goodsDTO> pattern_chair(String i_tag) {
 
-		return chair_list;
-	}
-	// 의자 정보 가져오기(테그)
-	public ArrayList<goodsDTO> pattern_chair(String i_tag) {
+			conn();
 
-		conn();
+			ArrayList<goodsDTO> chair_list = new ArrayList<goodsDTO>();
 
-		ArrayList<goodsDTO> chair_list = new ArrayList<goodsDTO>();
+			try {
 
-		try {
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='chair' AND g_tag=?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, i_tag);
+				rs = psmt.executeQuery();
 
-			String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='chair' AND g_tag=?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, i_tag);
-			rs = psmt.executeQuery();
+				while (rs.next()) {
+					int num = rs.getInt(1);
+					int price = rs.getInt(2);
+					String name = rs.getString(3);
+					String img_path = rs.getString(4);
+					String tag = rs.getString(5);
 
-			while (rs.next()) {
-				int num = rs.getInt(1);
-				int price = rs.getInt(2);
-				String name = rs.getString(3);
-				String img_path = rs.getString(4);
-				String tag = rs.getString(5);
+					ginfo = new goodsDTO(num, price, name, img_path, tag, "chair");
 
-				ginfo = new goodsDTO(num, price, name, img_path, tag, "chair");
+					chair_list.add(ginfo);
+					System.out.println(ginfo);
+				}
 
-				chair_list.add(ginfo);
-				System.out.println(ginfo);
+			} catch (SQLException e) {
+	 
+				e.printStackTrace();
+			} finally {
+				close();
 			}
 
-		} catch (SQLException e) {
- 
-			e.printStackTrace();
-		} finally {
-			close();
+			return chair_list;
 		}
+		public ArrayList<goodsDTO> select_mug() {
 
-		return chair_list;
-	}
+			conn();
+
+			ArrayList<goodsDTO> mug_list = new ArrayList<goodsDTO>();
+
+			try {
+
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='mug'";
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+
+				while (rs.next()) {
+					int num = rs.getInt(1);
+					int price = rs.getInt(2);
+					String name = rs.getString(3);
+					String img_path = rs.getString(4);
+					String tag = rs.getString(5);
+
+					ginfo = new goodsDTO(num, price, name, img_path, tag, "mug");
+
+					mug_list.add(ginfo);
+					System.out.println(ginfo);
+				}
+
+			} catch (SQLException e) {
+	 
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+
+			return mug_list;
+		}
+		// 의자 정보 가져오기(테그)
+		public ArrayList<goodsDTO> pattern_mug(String i_tag) {
+
+			conn();
+
+			ArrayList<goodsDTO> mug_list = new ArrayList<goodsDTO>();
+
+			try {
+
+				String sql = "SELECT g_num, g_price, g_name, g_img_path, g_tag FROM shop_goods WHERE g_category='mug' AND g_tag=?";
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, i_tag);
+				rs = psmt.executeQuery();
+
+				while (rs.next()) {
+					int num = rs.getInt(1);
+					int price = rs.getInt(2);
+					String name = rs.getString(3);
+					String img_path = rs.getString(4);
+					String tag = rs.getString(5);
+
+					ginfo = new goodsDTO(num, price, name, img_path, tag, "mug");
+
+					mug_list.add(ginfo);
+					System.out.println(ginfo);
+				}
+
+			} catch (SQLException e) {
+	 
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+
+			return mug_list;
+		}
 
 }
