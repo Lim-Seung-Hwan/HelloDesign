@@ -74,7 +74,7 @@
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
            <%if(info !=null) { %>
-             <a href="./update.jsp">회원정보변경</a>
+             <a href="./mypage.jsp">My Page</a>
              <a href="./LogoutService">Logout</a>
              <%}else{%>
              <a href="./login.jsp">Login</a>
@@ -96,7 +96,7 @@
                 <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./mat.jsp">MUG-CUP</a></li>
+                            <li><a href="./mug.jsp">MUG-CUP</a></li>
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
@@ -117,7 +117,7 @@
 					                 <%} %>
 	                            </a></li>
 	                        </ul>
-                        	<a href="./update.jsp">MY PAGE</a>
+                        	<a href="./mypage.jsp">MY PAGE</a>
                             <a href="./LogoutService">LOGOUT</a>
                         	<%}else{%>
                             <a href="./login.jsp">LOGIN</a>
