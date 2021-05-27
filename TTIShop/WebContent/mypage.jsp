@@ -26,7 +26,7 @@
 		}
 	}
 </script>
-<title>Ashion | Template</title>
+<title>My Page | Hello Design</title>
 <!-- Google Font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"

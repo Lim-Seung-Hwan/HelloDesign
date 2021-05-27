@@ -19,7 +19,6 @@ import com.order.orderDTO;
 
 @WebServlet("/payService")
 public class payService extends HttpServlet {
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
@@ -29,14 +28,15 @@ public class payService extends HttpServlet {
 		HttpSession session = request.getSession();
 		memberDTO loginDTO = (memberDTO) session.getAttribute("info");
 		orderDTO ordto = (orderDTO) session.getAttribute("order");
-		String uid = request.getParameter("imp_uid");
+		String imp_success = request.getParameter("imp_success");
 		int mnum = loginDTO.getNum();
 		orderDAO odao = new orderDAO();
 		orderDTO odto = null;
 		cartDAO cdao = new cartDAO();
 		cartDTO cdto = null;
+		System.out.println("imp_success: " + imp_success);
 		PrintWriter out = response.getWriter();
-		if(ordto != null) {
+		if(ordto != null && imp_success.equals("true")) {
 			String name = ordto.getO_name();
 			String addr = ordto.getO_address();
 			String phone = ordto.getO_phone();
