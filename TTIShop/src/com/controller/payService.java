@@ -28,7 +28,8 @@ public class payService extends HttpServlet {
 		HttpSession session = request.getSession();
 		memberDTO loginDTO = (memberDTO) session.getAttribute("info");
 		orderDTO ordto = (orderDTO) session.getAttribute("order");
-		String imp_success = request.getParameter("imp_success");
+		String imp_success = "false"; 
+		imp_success = request.getParameter("imp_success");
 		int mnum = loginDTO.getNum();
 		orderDAO odao = new orderDAO();
 		orderDTO odto = null;
@@ -62,7 +63,8 @@ public class payService extends HttpServlet {
 			 out.flush();
 				 
 		} else {
-			out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>"); 
+			if(imp_success.equals("false")) out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>");
+			else out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>");
 			out.flush();
 		}
 	} 
