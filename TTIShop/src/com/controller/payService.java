@@ -58,13 +58,14 @@ public class payService extends HttpServlet {
 				}
 			}
 			 out.println("<script>alert('♡ 결제성공 ♡'); location.replace(\"buy.jsp\"); self.close(); </script>"); 
+			 session.removeAttribute("order");
 			 out.flush();
 				 
-			} else {
-				out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>"); 
-				out.flush();
-			}
-		} 
+		} else {
+			out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>"); 
+			out.flush();
+		}
+	} 
 		
 	
 
