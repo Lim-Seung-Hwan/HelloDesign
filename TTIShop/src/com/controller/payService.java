@@ -63,7 +63,7 @@ public class payService extends HttpServlet {
 			 out.flush();
 				 
 		} else {
-			if(imp_success.equals("false")) out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>");
+			if(imp_success.equals("false")) out.println("<script>alert('결제에 실패하였습니다.'); location.replace(\"index.jsp\"); self.close(); </script>");
 			else out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>");
 			out.flush();
 		}
