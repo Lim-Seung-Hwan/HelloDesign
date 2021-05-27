@@ -13,6 +13,8 @@ public class orderDTO {
 	private int g_price;
 	private String g_name;
 	private String g_img_path;
+	private String list_num;
+	private String list_count;
 	
 	public orderDTO(int o_num, String o_address, String o_name, String o_phone, int g_num, String o_way,
 			String o_date, int m_num ,int o_count, int g_price, String g_name, String g_img_path) {
@@ -40,6 +42,14 @@ public class orderDTO {
 		this.o_way = o_way;
 		this.m_num = m_num;
 		this.o_count=o_count;
+	}
+	public orderDTO(String o_address, String o_name, String o_phone, String list_num, String list_count) {
+		super();
+		this.o_address = o_address;
+		this.o_name = o_name;
+		this.o_phone = o_phone;
+		this.list_num = list_num;
+		this.list_count = list_count;
 	}
 	public int getO_num() {
 		return o_num;
@@ -113,5 +123,17 @@ public class orderDTO {
 	public void setG_img_path(String g_img_path) {
 		this.g_img_path = g_img_path;
 	}
-	
+
+	public String getList_num() {
+		return list_num;
+	}
+	public void setList_num(String list_num) {
+		this.list_num = list_num;
+	}
+	public String getList_count() {
+		return list_count;
+	}
+	public void setList_count(String list_count) {
+		this.list_count = list_count;
+	}
 }

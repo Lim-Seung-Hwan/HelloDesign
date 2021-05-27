@@ -1,3 +1,5 @@
+<%@page import="com.order.orderDTO"%>
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.member.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,12 +14,22 @@
 <body>
 <%
 memberDTO info = (memberDTO)session.getAttribute("info");
+request.setCharacterEncoding("utf-8");
 String name = request.getParameter("name");
 String addr = request.getParameter("area") + " " + request.getParameter("addr") + " " + request.getParameter("detail_addr");
 String phone = request.getParameter("phone");
 String product_no = request.getParameter("product_no");
+String pname = request.getParameter("pname");
 String product_count = request.getParameter("product_count");
-int totalPrice = Integer.parseInt(request.getParameter("totalPrice")); //이부분 꼭 바꾸셔야 합니다!
+int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
+int pcount = 0;
+if(request.getParameter("multiple")!=null) {
+	pcount = Integer.parseInt(request.getParameter("multiple"));
+}
+String urlpno = URLEncoder.encode(product_no, "utf-8");
+String urlpcount = URLEncoder.encode(product_count, "utf-8");
+orderDTO odto = new orderDTO(addr, name, phone, product_no, product_count);
+session.setAttribute("order", odto);
 %>
     <script>
     $(function(){
@@ -29,14 +41,14 @@ int totalPrice = Integer.parseInt(request.getParameter("totalPrice")); //이부�
             pg : 'kakaopay',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : 'Hello Design Checkout',
+            name : '<%=pname%> <%if(pcount>1) {%> 외 <%=pcount-1%>건<%}%>',
             amount : <%=totalPrice%>,
-           <%--  buyer_email : '<%=email%>', --%>
+            buyer_email : '',
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
             buyer_addr : '<%=addr%>',
-            buyer_postcode : '123-456',
-            //m_redirect_url : 'http://www.naver.com'
+            buyer_postcode : '',
+            m_redirect_url : 'http://digiwb.softether.net:8085/TTIShop/payService'
         }, function(rsp) {
             if ( rsp.success ) {
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
@@ -66,8 +78,8 @@ int totalPrice = Integer.parseInt(request.getParameter("totalPrice")); //이부�
                     }
                 });
                 //성공시 이동할 페이지
-                var cform = document.checkout__form
-                cform.submit();
+                opener.location.replace("payService");
+                self.close();
                 
             } else {
                 msg = '결제에 실패하였습니다.';
@@ -81,12 +93,12 @@ int totalPrice = Integer.parseInt(request.getParameter("totalPrice")); //이부�
         
     });
     </script>
-	<form action="payService" method="post" name="checkout__form">
+	<!--  <form action="payService" method="post" name="checkout__form">
 		<input type="text" name="name" value="<%=name%>" style="display:none">
 		<input type="text" name="addr" value="<%=addr%>" style="display:none">
 		<input type="text" name="phone" value="<%=phone%>" style="display:none">
 		<input type="text" name="product_no" value="<%=product_no%>" style="display:none">
 		<input type="text" name="product_count" value="<%=product_count%>" style="display:none">		
-	</form>
+	</form> -->
 </body>
 </html>

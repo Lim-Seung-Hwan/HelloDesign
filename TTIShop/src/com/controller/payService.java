@@ -28,22 +28,21 @@ public class payService extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		memberDTO loginDTO = (memberDTO) session.getAttribute("info");
+		orderDTO ordto = (orderDTO) session.getAttribute("order");
+		String uid = request.getParameter("imp_uid");
 		int mnum = loginDTO.getNum();
-		String card_number=request.getParameter("card_number");
-		String card_password=request.getParameter("card_password");
-		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");
-		String phone = request.getParameter("phone");
-		String[] product_no = request.getParameter("product_no").split(";");
-		String[] product_count = request.getParameter("product_count").split(";");
 		orderDAO odao = new orderDAO();
 		orderDTO odto = null;
 		cartDAO cdao = new cartDAO();
 		cartDTO cdto = null;
 		PrintWriter out = response.getWriter();
-		
+		if(ordto != null) {
+			String name = ordto.getO_name();
+			String addr = ordto.getO_address();
+			String phone = ordto.getO_phone();
+			String[] product_no = ordto.getList_num().split(";");
+			String[] product_count = ordto.getList_count().split(";");
 			System.out.println("결제 성공");
-			
 			for (int i = 0; i < product_no.length; i++) {
 				int pronum = Integer.parseInt(product_no[i]);
 				int procount = Integer.parseInt(product_count[i]);
@@ -58,10 +57,14 @@ public class payService extends HttpServlet {
 					System.out.println("실패!");
 				}
 			}
-			 out.println("<script>alert('♡ 결제성공 ♡'); opener.location.replace(\"index.jsp\"); self.close(); </script>"); 
+			 out.println("<script>alert('♡ 결제성공 ♡'); location.replace(\"buy.jsp\"); self.close(); </script>"); 
 			 out.flush();
-			 
-		}
+				 
+			} else {
+				out.println("<script>alert('잘못된 요청입니다.'); location.replace(\"index.jsp\"); self.close(); </script>"); 
+				out.flush();
+			}
+		} 
 		
 	
 
