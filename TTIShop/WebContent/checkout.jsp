@@ -9,6 +9,24 @@
 <html lang="zxx">
 
 <head>
+
+<%
+	/* session.setAttribute("info","");
+	goodsDTO info = (goodsDTO)session.getAttribute("info"); */
+
+	cartDAO cartdao = new cartDAO();
+	ArrayList<cartDTO> cart_list = null;
+	memberDTO info=(memberDTO)session.getAttribute("info");
+	if(info==null) {
+		response.sendRedirect("loginFail.jsp?trying=0");
+	} else {
+		cart_list = cartdao.select_cart(info.getNum());
+		if(cart_list.size()==0) {
+			out.print("<script>alert('상품을 먼저 장바구니에 담아주세요.'); location.href='index.jsp';</script>");
+		}
+	}
+	
+%>
     <meta charset="UTF-8">
     <meta name="description" content="Ashion Template">
     <meta name="keywords" content="Ashion, unica, creative, html">
@@ -27,7 +45,7 @@
 			if(!namecheck && !addrcheck && !phonecheck) {
 		  		window.open("", "전자결제 신용카드", "width=830, height=600, left=100, top=50");
 		  		var cform = document.checkout__form
-		  		cform.action="kakaoPay.jsp";
+		  		cform.action="kakaoPay.jsp<%if (info != null && cart_list.size() > 1) {%>?multiple=<%=cart_list.size()%><%}%>";
 		  		cform.method="post";
 		  		cform.target="전자결제 신용카드";
 		  		cform.submit();
@@ -62,23 +80,6 @@
 
 <body>
 
-<%
-	/* session.setAttribute("info","");
-	goodsDTO info = (goodsDTO)session.getAttribute("info"); */
-
-	cartDAO cartdao = new cartDAO();
-	ArrayList<cartDTO> cart_list = null;
-	memberDTO info=(memberDTO)session.getAttribute("info");
-	if(info==null) {
-		response.sendRedirect("loginFail.jsp?trying=0");
-	} else {
-		cart_list = cartdao.select_cart(info.getNum());
-		if(cart_list.size()==0) {
-			out.print("<script>alert('상품을 먼저 장바구니에 담아주세요.'); location.href='index.jsp';</script>");
-		}
-	}
-	
-%>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -284,6 +285,7 @@
                                 </div>
                                 <!-- <input type = "submit" value="주문하기"> -->
                                 <input name="totalPrice" style="display:none" value="<%=sum%>">
+                                <input name="pname" style="display:none" value="<%if(cart_list != null){ %><%=cart_list.get(0).getC_name()%><%}%>">
                                 <button type="button" class="site-btn" onclick="showPopup();" />주문하기</button>
                             </div>
                         </div>
