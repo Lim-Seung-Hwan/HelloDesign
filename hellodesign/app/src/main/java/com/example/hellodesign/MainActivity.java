@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.JsResult;
@@ -19,11 +20,19 @@ public class MainActivity extends AppCompatActivity {
     private long backBtnTime = 0;
     WebView web;
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.activity_main);
+        } else {
+            setContentView(R.layout.activity_main_horizontal);
+        }
 
         web = findViewById(R.id.wv);
         WebSettings webSettings = web.getSettings();
@@ -61,6 +70,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             if (url != null && url.startsWith("intent://")) {
+                try {
+                    Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+                    Intent existPackage = getPackageManager().getLaunchIntentForPackage(intent.getPackage());
+                    if (existPackage != null) {
+                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    } else {
+                        Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+                        marketIntent.setData(Uri.parse("market://details?id=" + intent.getPackage()));
+                        startActivity(marketIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    }
+                    return true;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (url != null && url.startsWith("intent:")) {
                 try {
                     Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
                     Intent existPackage = getPackageManager().getLaunchIntentForPackage(intent.getPackage());
