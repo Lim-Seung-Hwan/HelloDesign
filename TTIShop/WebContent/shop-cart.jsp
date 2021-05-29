@@ -94,7 +94,7 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
             </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.jsp"><img src="img/logo.jpg" alt=""></a>
+            <a href="./index.jsp"><img src="img/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
