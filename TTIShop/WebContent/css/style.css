@@ -3768,3 +3768,20 @@ ol {
 .mp_button > span {
 	font-size: 11px;
 }
+
+.header__right__widget li a {
+	transition:all .2s;
+}
+
+.header__right__widget li a:hover {
+	color:red;
+	transition:all .2s;
+}
+.header__right__auth a {
+	transition:all .2s;
+}
+.header__right__auth a:hover {
+	color:red;
+	transition:all .2s;
+	
+}
