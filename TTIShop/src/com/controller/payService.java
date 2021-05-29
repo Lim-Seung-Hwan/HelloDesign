@@ -47,7 +47,7 @@ public class payService extends HttpServlet {
 			for (int i = 0; i < product_no.length; i++) {
 				int pronum = Integer.parseInt(product_no[i]);
 				int procount = Integer.parseInt(product_count[i]);
-				odto = new orderDTO(addr, name, phone, pronum, "HD카드", mnum, procount);
+				odto = new orderDTO(addr, name, phone, pronum, "카드", mnum, procount);
 				int cnt = odao.insert(odto);
 				if(cnt > 0) {
 					System.out.println("추가됨");

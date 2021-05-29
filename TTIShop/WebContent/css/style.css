@@ -340,16 +340,19 @@ ol {
 	display: inline-block;
 	margin-right: 40px;
 	position: relative;
+	transition:all .7s;
 }
 
 .header__menu ul li.active a {
 	color: red;
 	font-weight: bold;
+	transition:all .7s;
 }
 
 .header__menu ul li:hover a {
 	color: red;
 	font-weight: bold;
+	transition:all .7s;
 }
 
 .header__menu ul li:hover .dropdown {
@@ -3743,6 +3746,12 @@ ol {
     display: flex;
     margin: 20px;
     justify-content: center;
+	transition:all .2s;
+}
+
+.mp_button:hover {
+	background-color:lightblue;
+	transition:all .2s;
 }
 
 .mp_img {
