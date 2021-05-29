@@ -28,8 +28,8 @@ public class payService extends HttpServlet {
 		HttpSession session = request.getSession();
 		memberDTO loginDTO = (memberDTO) session.getAttribute("info");
 		orderDTO ordto = (orderDTO) session.getAttribute("order");
-		String imp_success = "false"; 
-		imp_success = request.getParameter("imp_success");
+		String imp_success = request.getParameter("imp_success");
+		if(imp_success==null) imp_success = "true";
 		int mnum = loginDTO.getNum();
 		orderDAO odao = new orderDAO();
 		orderDTO odto = null;
