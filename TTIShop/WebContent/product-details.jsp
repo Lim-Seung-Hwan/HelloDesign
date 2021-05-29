@@ -157,7 +157,7 @@
                     </div>
                     
                     <!-- <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
                         <a href="#">Women’s </a>
                         <span>Essential structured blazer</span>
                     </div> -->
