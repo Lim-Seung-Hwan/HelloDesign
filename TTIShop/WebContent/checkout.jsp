@@ -43,7 +43,7 @@
 			var addrcheck = document.checkout__form.addr.value == "";
 			var phonecheck = document.checkout__form.phone.value == "";
 			if(!namecheck && !addrcheck && !phonecheck) {
-		  		window.open("", "전자결제 신용카드", "width=830, height=600, left=100, top=50");
+		  		window.open("", "전자결제 신용카드", "width=1200, height=758, left=100, top=50");
 		  		var cform = document.checkout__form
 		  		cform.action="kakaoPay.jsp<%if (info != null && cart_list.size() > 1) {%>?multiple=<%=cart_list.size()%><%}%>";
 		  		cform.method="post";
