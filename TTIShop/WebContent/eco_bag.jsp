@@ -205,7 +205,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
-                        <span>에코백</span>
+                        <span>ECO-BAG</span>
                     </div>
                 </div>
             </div>
