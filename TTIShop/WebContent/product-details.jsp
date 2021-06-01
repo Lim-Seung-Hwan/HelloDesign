@@ -13,7 +13,8 @@
 	goodsDAO gdao = new goodsDAO();
 
 	goodsDTO data = gdao.details(g_num);
-	String cat = data.getCategory();
+	String cat = "Unknown";
+	if(data!=null) cat = data.getCategory();
 	
 	cartDAO cartdao = new cartDAO();
 	ArrayList<cartDTO> cart_list = null;
@@ -147,13 +148,13 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
-                        <%if(cat.equals("mat")) { %><a href="./mat.jsp">돗자리</a><%} %>
-                        <%if(cat.equals("eco")) { %><a href="./eco-bag.jsp">에코백</a><%} %>
-                        <%if(cat.equals("chair")) { %><a href="./chair.jsp">의자</a><%} %>
-                        <%if(cat.equals("apron")) { %><a href="./apron.jsp">앞치마</a><%} %>
-                        <%  if(data!=null) { %><span><%=data.getName() %></span> <!-- 상품명 -->
-                        <% } else { %> <span>없는 상품입니다.</span>
-                        <% } %>
+                        <%if(cat.equals("mat")) { %><a href="./mug.jsp">MUG-CUP</a><%} %>
+                        <%if(cat.equals("eco")) { %><a href="./eco-bag.jsp">ECO-BAG</a><%} %>
+                        <%if(cat.equals("chair")) { %><a href="./chair.jsp">CHAIR</a><%} %>
+                        <%if(cat.equals("apron")) { %><a href="./apron.jsp">APRON</a><%} %>
+                        <%if(data!=null) { %><span><%=data.getName() %></span> <!-- 상품명 -->
+                        <%} else { %> <span>Not Found</span>
+                        <%} %>
                     </div>
                     
                     <!-- <div class="breadcrumb__links">
