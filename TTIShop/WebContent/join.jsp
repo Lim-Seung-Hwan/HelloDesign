@@ -78,7 +78,6 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
-            <li><span class="icon_search search-switch"></span></li>
             <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
                 <div class="tip">0</div>
             </a></li>
