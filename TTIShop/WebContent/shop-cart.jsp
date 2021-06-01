@@ -83,10 +83,6 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
-            <li><span class="icon_search search-switch"></span></li>
-            <li><a href="#"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
             <li><a href="./shop-cart.jsp"><span class="icon_bag_alt"></span>
                 <%if(cart_list!=null) { %><div class="tip"><%=cart_list.size() %></div>
                 <%} else { %><div class="tip">0</div>
@@ -98,8 +94,13 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="./login.jsp">Login</a>
-            <a href="./join.jsp">Join</a>
+      		<%if(info !=null) { %>
+				<a href="./mypage.jsp">MY PAGE</a>
+	            <a href="./LogoutService">LOGOUT</a>
+	        <%}else{%>
+	            <a href="./login.jsp">LOGIN</a>
+				<a href="./join.jsp">JOIN</a>
+	        <%} %>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -212,7 +213,9 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
                                     <a><span onclick="updateSubmit(<%=i%>,<%=cart_list.get(i).getG_num()%>)"><i class="fa fa-check-circle-o"></i></span></a>
                                     </td>
                                 </tr>
-                                <% price += total; } 
+                                <% price += total; %>
+                                
+                                <%} 
                                 StringBuilder stringBuilder = new StringBuilder();
                                 for (String item : myItem) { stringBuilder.append(item); }
                                 String myItemProcess = stringBuilder.toString();
@@ -287,7 +290,7 @@ else response.sendRedirect("loginFail.jsp?try_login=0");
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>

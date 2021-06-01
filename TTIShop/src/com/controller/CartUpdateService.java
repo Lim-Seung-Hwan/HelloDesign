@@ -30,7 +30,14 @@ public class CartUpdateService extends HttpServlet {
 		memberDTO loginDTO = (memberDTO) session.getAttribute("info");
 		int mnum = loginDTO.getNum();
 		int gnum = Integer.parseInt(request.getParameter("gnum"));
-		int count = Integer.parseInt(request.getParameter("count"));
+		String oCount = request.getParameter("count");
+		int count = 1;
+		try {
+			count = Integer.parseInt(oCount);
+		} catch (NumberFormatException e) {
+			count = 1;
+		}
+		if(count<1) count = 1;
 		System.out.println("mnum=" + mnum + "gnum=" + gnum + "count=" + count);
 		cartDTO cdto = new cartDTO(mnum, gnum, count);
 		
