@@ -19,10 +19,16 @@
 	function edtCheck() {
 		var form = document.update;
 		var pwCheck = form.pw.value == "";
+		var pwCheck2 = form.pw_chk.value;
 		if(pwCheck) {
 			alert("비밀번호를 입력해주세요.");
 		} else {
-			form.submit();
+			if(form.pw.value == pwCheck2) {
+				form.submit();
+			}
+			else{
+				alert("비밀번호를 확인해주세요.")
+			}
 		}
 	}
 </script>
@@ -176,6 +182,7 @@
                             <div class="col-lg-12">
                             <%if(info != null) { %>
                                 <input type="password" placeholder="비밀번호" name="pw">
+                                <input type="password" placeholder="비밀번호 확인" name="pw_chk">
                                 <input type="text" placeholder="이름" name="name" value="<%=info.getName() %>">
                                 <input type="text" placeholder="주소" name="address" value="<%=info.getAddress() %>">
                                 <input type="text" placeholder="전화번호" name="phone" value="<%=info.getPhone() %>" style="margin-bottom: 35px;">
