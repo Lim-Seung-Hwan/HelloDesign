@@ -47,7 +47,7 @@
 		document.getElementById('winter').checked = false;
 		autocheck(tag);
 		document.cookie = encodeURIComponent("tag") + "=" + encodeURIComponent(tag);
-		location.reload();
+		location.href="http://localhost:9000";
   	}
   	
   	function readCookie(name) {
@@ -227,13 +227,16 @@
                             </div>
                            <!-- 테그마다 클릭할때 실행되는 함수를 지정 -->
 							<div class="size__list color__list">
-								<form action="http://localhost:9000" method="post">
-								
-									<input type="submit" value="spring"><br>
-									<input type="submit" value="summer"><br>
-									<input type="submit" value="fall"><br>
-									<input type="submit" value="winter"><br>
-									
+								<form action="http://localhost:9000" method="post" name="custom">
+									<label for="spring" onClick="checkboxClick('spring')"> spring <input type="checkbox"
+									id="spring"> <span class="checkmark"></span>
+									</label> <label for="summer" onClick="checkboxClick('summer')"> summer <input type="checkbox"
+										id="summer"> <span class="checkmark"></span>
+									</label> <label for="fall" onClick="checkboxClick('fall')"> fall <input type="checkbox"
+										id="fall"> <span class="checkmark"></span>
+									</label> <label for="winter" onClick="checkboxClick('winter')"> winter <input type="checkbox"
+										id="winter"> <span class="checkmark"></span>
+									</label>
 							   </form>
 							</div> 
                         </div>
