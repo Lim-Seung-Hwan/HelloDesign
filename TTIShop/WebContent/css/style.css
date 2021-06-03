@@ -3796,17 +3796,3 @@ ol {
     margin-bottom: auto;
 }
 
-.button2 {
-    background-color: #F34437;
-    width: 100px;
-    border: none;
-    color: #fff !important;
-    padding: 15px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 13px;
-    margin: 4px;
-    cursor: pointer;
-    border-radius: 10px;
-}

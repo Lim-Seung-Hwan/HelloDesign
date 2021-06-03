@@ -16,6 +16,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Ashion | Template</title>
+<style type="text/css">
+
+.button2 {
+    background-color: #F34437;
+    width: 100px;
+    border: none;
+    color: #fff !important;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+</style>
+
+
+
+
 
 <script type="text/javascript">
 	/* 공부 필요 */
@@ -239,7 +261,7 @@
 	<!-- Shop Section Begin -->
 	<section class="shop spad">
 		<div class="container">
-			<div class="row">
+			<div class="row" style="margin-left:100px">
 				<div class="col-lg-3 col-md-3">
 					<div class="shop__sidebar">
 						<div class="sidebar__color">
@@ -249,7 +271,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-9 col-md-9" style="float: left;">
+				<div class="col-lg-6 col-md-9" style="float: left;" >
 					<!-- 여기서 실시간 상품 만드는 작업 이루어 지면 됨 -->
 
 					<%-- <%
@@ -261,6 +283,7 @@
 					try {
 						Thread.sleep(3000);
 					%>
+					
 					<img src="./img/pattern/example.png"
 						style="width: 512px; height: 512px;">
 					<%-- <img src="./img/pattern/example<%=cnt%>.png"> --%>
@@ -288,13 +311,12 @@
 					</table>
 
 					<div id="image_preview">
-						<img src="/img.png" alt="사진영역"
-							style="width: 512px; height: 512px;">
+						<img src="/img.png" alt="사진영역" style="width: 512px; height: 512px;">
 					</div>
 
 					<div class="f_box">
-						<label for="img"></label><input type="file" id="img"
-							name="bf_file[]">
+						<label for="img"></label>
+						<input type="file" id="img" name="bf_file[]">
 
 					</div>
 
@@ -315,9 +337,9 @@
 											if ($.inArray(ext, [ 'gif', 'png',
 													'jpg', 'jpeg' ]) == -1) {
 												resetFormElement($(this)); //폼 초기화
-												window
-														.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-											} else {
+												window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+											} 
+											else {
 												file = $('#img').prop("files")[0];
 												blobURL = window.URL
 														.createObjectURL(file);
