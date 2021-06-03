@@ -89,7 +89,7 @@
 	} 
 
 	/* arraylist형인 apron_list받아옴. 일단 null */
-	ArrayList<goodsDTO> mat_list = null;
+	ArrayList<goodsDTO> mug_list = null;
 	/* 배열 형태 쿠키 생성 - 여러 정보 저장 할 거라서 -->공부 필요 */
 	Cookie[] cookies = request.getCookies();
 	String tag = null;
@@ -105,11 +105,11 @@
 	
 	/* tag를 선택 했는지 안했는지 */
 	if (tag != null) {/* tag를 선택 했을 때 - 선택한 테그에 대한 모든 정보 가져옴*/
-		goodsDAO matdao = new goodsDAO();
-		mat_list = matdao.pattern_mat(tag);
+		goodsDAO mugdao = new goodsDAO();
+		mug_list = mugdao.pattern_mug(tag);
 	} else { /* tag를 선택 안 했을 때 - 모든 정보 가져옴 */
-		goodsDAO matdao = new goodsDAO();
-		mat_list = matdao.select_mat();
+		goodsDAO mugdao = new goodsDAO();
+		mug_list = mugdao.select_mug();
 	}
 %>
 
@@ -242,20 +242,20 @@
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="row">
-                    	<%for (int i=0; i<mat_list.size(); i++){%>
+                    	<%for (int i=0; i<mug_list.size(); i++){%>
 	                        <div class="col-lg-4 col-md-6">
 	                            <div class="product__item">
-	                                <div class="product__item__pic set-bg" data-setbg="<%=mat_list.get(i).getImg_path() %>" onClick="location.href='./product-details.jsp?g_num=<%=mat_list.get(i).getNum()%>'">
+	                                <div class="product__item__pic set-bg" data-setbg="<%=mug_list.get(i).getImg_path() %>" onClick="location.href='./product-details.jsp?g_num=<%=mug_list.get(i).getNum()%>'">
 	                                   <!--  <div class="label new">New</div> -->
 	                                    <%-- <ul class="product__hover">
-	                                        <li><a href="<%=mat_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
+	                                        <li><a href="<%=mug_list.get(i).getImg_path() %>" class="image-popup"><span class="arrow_expand"></span></a></li>
 	                                        <li><a href="#"><span class="icon_heart_alt"></span></a></li>
 	                                        <li><a href="#"><span class="icon_bag_alt"></span></a></li>
 	                                    </ul> --%>
 	                                </div>
 	                                <div class="product__item__text">
-	                                    <h6><a href="./product-details.jsp?g_num=<%=mat_list.get(i).getNum()%>"><%= mat_list.get(i).getName() %></a></h6>
-	                                    <div class="product__price"><%= mat_list.get(i).getPrice() %></div>
+	                                    <h6><a href="./product-details.jsp?g_num=<%=mug_list.get(i).getNum()%>"><%= mug_list.get(i).getName() %></a></h6>
+	                                    <div class="product__price"><%= mug_list.get(i).getPrice() %></div>
 	                                </div>
 	                            </div>
 	                        </div>
