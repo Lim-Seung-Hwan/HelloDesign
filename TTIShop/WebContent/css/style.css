@@ -3769,6 +3769,11 @@ ol {
 	font-size: 11px;
 }
 
+.mp_button div {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .header__right__widget li a {
 	transition:all .2s;
 }
