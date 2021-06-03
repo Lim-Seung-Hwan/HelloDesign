@@ -238,33 +238,6 @@
 		<div class="container">
 			<div class="row">
 
-				<!-- flask 전송코두 -->
-				<!--                 <div class="col-lg-3 col-md-3">
-                    <div class="shop__sidebar">
-                        <div class="sidebar__color">
-                           <div class="section-title">
-                                <h4>pattern</h4>
-                            </div>
-                           테그마다 클릭할때 실행되는 함수를 지정
-							<div class="size__list color__list">					
-									<form action="http://localhost:9000" method="post" name="custom">
-									<label for="spring" onClick="checkboxClick('spring')"> spring <input type="checkbox"
-									id="spring"> <span class="checkmark"></span>
-									</label> <label for="summer" onClick="checkboxClick('summer')"> summer <input type="checkbox"
-										id="summer"> <span class="checkmark"></span>
-									</label> <label for="fall" onClick="checkboxClick('fall')"> fall <input type="checkbox"
-										id="fall"> <span class="checkmark"></span>
-									</label> <label for="winter" onClick="checkboxClick('winter')"> winter <input type="checkbox"
-										id="winter"> <span class="checkmark"></span>
-									</label>
-							   </form>
-							</div> 
-                        </div>
-                    </div>
-                </div> -->
-
-
-
 				<div class="col-lg-12 col-md-12">
 					<!-- 여기서 실시간 상품 만드는 작업 이루어 지면 됨 -->
 					<form action="http://localhost:9000" method="post" name="custom">
