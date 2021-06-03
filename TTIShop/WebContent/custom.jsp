@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ashion | Template</title>
-
 <script type="text/javascript">
 /* 공부 필요 */
 	window.onload = function(){
@@ -206,7 +205,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.jsp"><i class="fa fa-home"></i> Home</a>
+                        <a href="./index.jsp"><i class="fa fa-home"></i>Home</a>
                         <span>custom</span>
                     </div>
                 </div>
@@ -219,15 +218,17 @@
     <section class="shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3">
+            
+            <!-- flask 전송코두 -->
+<!--                 <div class="col-lg-3 col-md-3">
                     <div class="shop__sidebar">
                         <div class="sidebar__color">
                            <div class="section-title">
                                 <h4>pattern</h4>
                             </div>
-                           <!-- 테그마다 클릭할때 실행되는 함수를 지정 -->
-							<div class="size__list color__list">
-								<form action="http://localhost:9000" method="post" name="custom">
+                           테그마다 클릭할때 실행되는 함수를 지정
+							<div class="size__list color__list">					
+									<form action="http://localhost:9000" method="post" name="custom">
 									<label for="spring" onClick="checkboxClick('spring')"> spring <input type="checkbox"
 									id="spring"> <span class="checkmark"></span>
 									</label> <label for="summer" onClick="checkboxClick('summer')"> summer <input type="checkbox"
@@ -241,10 +242,55 @@
 							</div> 
                         </div>
                     </div>
-                </div>
+                </div> -->
+                
+                
+                
                 <div class="col-lg-9 col-md-9">
                    <!-- 여기서 실시간 상품 만드는 작업 이루어 지면 됨 -->
-                   				   
+	<form action="http://localhost:9000" method="post" name="custom">
+		<div class="container">
+            <div class="row mp_list">
+                <div class="col-lg-4 mp_button" onclick="location.href='http://localhost:9000'">
+                	<img src="img/order.png" class="mp_img"/>
+                	
+	                    <h7 id="spring">spring</h7><br>
+                	
+                </div>
+        	</div>
+    	</div>
+		<div class="container">
+            <div class="row mp_list">
+                <div class="col-lg-4 mp_button" onclick="location.href='http://localhost:9000'">
+                	<img src="img/order.png" class="mp_img"/>
+                	<div>
+	                    <h4 id="summer">summer</h4>
+                	</div>
+                </div>
+        	</div>
+    	</div>
+		<div class="container">
+            <div class="row mp_list">
+                <div class="col-lg-4 mp_button" onclick="location.href='http://localhost:9000'">
+                	<img src="img/order.png" class="mp_img"/>
+                	<div>
+	                    <h4 id="fall">fall</h4>
+                	</div>
+                </div>
+        	</div>
+    	</div>
+		<div class="container">
+            <div class="row mp_list">
+                <div class="col-lg-4 mp_button" onclick="location.href='http://localhost:9000'">
+                	<img src="img/order.png" class="mp_img"/>
+                	<div>
+	                    <h4 id="winter">winter</h4>
+                	</div>
+                </div>
+        	</div>
+    	</div>
+    </form>
+						
                    <!-- 여기서 실시간 상품 만드는 작업 이루어 지면 됨 -->
                 </div>
             </div>

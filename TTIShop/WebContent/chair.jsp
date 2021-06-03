@@ -165,6 +165,7 @@
                             <li><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li class="active"><a href="./chair.jsp">CHAIR</a></li>
+                            <li><a href="./custom.jsp">CUSTOM</a></li>
                         </ul>
                     </nav>
                 </div>

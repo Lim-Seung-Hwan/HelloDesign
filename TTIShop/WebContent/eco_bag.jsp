@@ -162,6 +162,7 @@
                             <li class="active"><a href="./eco_bag.jsp">ECO-BAG</a></li>
                             <li><a href="./apron.jsp">APRON</a></li>
                             <li><a href="./chair.jsp">CHAIR</a></li>
+                            <li><a href="./custom.jsp">CUSTOM</a></li>
                            <!--  <li><a href="#">주문제작</a></li>  -->
                         </ul>
                     </nav>
