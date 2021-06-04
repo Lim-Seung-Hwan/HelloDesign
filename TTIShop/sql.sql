@@ -67,5 +67,26 @@ COMMIT;
 desc shop_cart;
 SELECT * FROM shop_goods;
 
-
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/shop/shop-1.jpg', 'winter', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_eco/spring_bag_1.jpg', 'spring', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_eco/spring_bag_2.png', 'spring', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_eco/spring_bag_3.png', 'spring', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_eco/summer_bag_1.png', 'summer', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_eco/summer_bag_2.png', 'summer', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_eco/summer_bag_3.png', 'summer', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_apron/spring_apron_1.png', 'spring', 'apron');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_apron/spring_apron_2.png', 'spring', 'apron');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_apron/spring_apron_3.png', 'spring', 'apron');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_apron/summer_apron_2.png', 'summer', 'apron');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_apron/summer_apron_3.png', 'summer', 'apron');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_mug/spring_cup_1.png', 'spring', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_mug/spring_cup_2.jpg', 'spring', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_mug/spring_cup_3.png', 'spring', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_mug/summer_cup_1.jpg', 'summer', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_mug/summer_cup_2.png', 'summer', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_mug/summer_cup_3.png', 'summer', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_chair/spring_chair_1.png', 'spring', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_chair/spring_chair_2.jpg', 'spring', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_chair/spring_chair_3.png', 'spring', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_chair/summer_chair_1.png', 'summer', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_chair/summer_chair_2.png', 'summer', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/summer_chair/summer_chair_3.jpg', 'summer', 'chair');
