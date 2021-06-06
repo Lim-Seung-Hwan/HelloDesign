@@ -63,9 +63,9 @@ INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 에코�
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 에코백2', '겨울 에코백2', 'attach/winter/winter_ecobag2.jpg', 'winter', 'eco');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 에코백3', '겨울 에코백3', 'attach/winter/winter_ecobag3.jpg', 'winter', 'eco');
 
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 의자1', '겨울 의자1', 'attach/winter/winter_chair1.jpg', 'winter', 'chair');
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 의자2', '겨울 의자2', 'attach/winter/winter_chair2.jpg', 'winter', 'chair');
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 의자3', '겨울 의자3', 'attach/winter/winter_chair3.jpg', 'winter', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 의자1', '겨울 의자1', 'attach/winter/winter_chiar1.jpg', 'winter', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 의자2', '겨울 의자2', 'attach/winter/winter_chiar2.jpg', 'winter', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 의자3', '겨울 의자3', 'attach/winter/winter_chiar3.jpg', 'winter', 'chair');
 
 
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '겨울 머그컵1', '겨울 머그컵1', 'attach/winter/winter_mug1.jpg', 'winter', 'mug');
