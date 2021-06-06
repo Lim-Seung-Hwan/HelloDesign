@@ -274,33 +274,30 @@
 				<div class="col-lg-6 col-md-9" style="float: left;" >
 					<!-- 여기서 실시간 상품 만드는 작업 이루어 지면 됨 -->
 
-					<%-- <%
+				 <%
 				   int cnt=Integer.parseInt(request.getParameter("count"));
 				   cnt=cnt-1;
-				   %> --%>
-
-					<%
-					try {
-						Thread.sleep(3000);
-					%>
-					
-					<img src="./img/pattern/example.png"
-						style="width: 512px; height: 512px;">
-					<%-- <img src="./img/pattern/example<%=cnt%>.png"> --%>
-					<%
-					} catch (InterruptedException e) {
-					e.printStackTrace();
-					}
-					%>
+				   %> 
+				   
+				   	<%try{
+				   		Thread.sleep(3000);%>
+				   		
+				   		<img src="./img/pattern/example<%=cnt%>.png" style="width: 512px; height: 512px;">
+				   		
+				   	<%
+				   	}catch(InterruptedException e){
+				   		e.printStackTrace();
+				   	} %>
 
 					<table width = "510px">
 				
 						<tr>
 							<td width = '170px'></td>
 						
-							<td width = '170px' align = 'center'>	
-								<form action="http://localhost:9000" method="post" id="form">
-									<button class="button2">이미지 재생성</button>
+							<td width = '170px' align = 'center'>
+							<%String wearther = request.getParameter("time"); %>
+								<form action="http://localhost:9000/<%=wearther%>"  id="form">
+									<input type="submit" class="button2" value="이미지 재생성"/>
 								</form>
 							</td>
 							
@@ -310,47 +307,49 @@
 					
 					</table>
 
-					<div id="image_preview">
-						<img src="/img.png" alt="사진영역" style="width: 512px; height: 512px;">
-					</div>
+					<form method="post" enctype="multipart/form-data" action="imgup.jsp" id="fileUploadForm">
+				     	<input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="filename1"/>
+				     	<input id="btnSubmit" type="submit" value="업로드" style="display:none"/> 
+				    </form>
+				   
+				   
+				    <iframe id="if" name="param" style="display:none;"></iframe>
+				    
+				     <div id="image_container">
+				     	<img src="/" style="width: 512px; height: 512px;" id="user_img">
+				     </div>
+				     
+				    
+					<!--"http://localhost:9000/custom" -->
+					
+					<br>
+					<button id="btn" class="button2" style="margin-left:200px">CUSTOM</button>
+					<br>
+					<img src="/" style="width: 512px; height: 512px;" id="custom_img"> <!-- 커스터마이징 된 이미지가 나오는 태그  -->
 
-					<div class="f_box">
-						<label for="img"></label>
-						<input type="file" id="img" name="bf_file[]">
-
-					</div>
-
-
-					<script src="./js/jquery-3.3.1.min.js">
-						//jQuery 파일 불러오기
-					</script>
-
-					<script type="text/javascript">
-						// 이미지 업로드
-						$('#img')
-								.on(
-										'change',
-										function() {
-											ext = $(this).val().split('.')
-													.pop().toLowerCase(); //확장자
-											//배열에 추출한 확장자가 존재하는지 체크
-											if ($.inArray(ext, [ 'gif', 'png',
-													'jpg', 'jpeg' ]) == -1) {
-												resetFormElement($(this)); //폼 초기화
-												window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-											} 
-											else {
-												file = $('#img').prop("files")[0];
-												blobURL = window.URL
-														.createObjectURL(file);
-												$('#image_preview img').attr(
-														'src', blobURL);
-												$('#image_preview').slideDown(); //업로드한 이미지 미리보기 
-												$(this).slideUp(); //파일 양식 감춤
-											}
-										});
-					</script>
-
+			
+				<script src="./js/jquery-3.3.1.min.js">//jQuery 파일 불러오기</script>
+				
+				<script type="text/javascript">
+				
+					var src=null;
+					
+					function setThumbnail(event){
+						
+						var reader = new FileReader();
+						reader.onload = function(event){
+							var img = document.getElementById("user_img");
+							img.setAttribute("src", event.target.result);
+							
+							src = jQuery('#user_img').attr("src");
+							console.log('src 출력:');
+							console.log(src);
+							
+							};
+						reader.readAsDataURL(event.target.files[0]);
+						}
+					
+				</script>
 
 
 					<!-- 여기서 실시간 상품 만드는 작업 이루어 지면 됨 -->
@@ -393,6 +392,54 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.nicescroll.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+					    $("#btn").click(function (event) {         
+					    	//preventDefault 는 기본으로 정의된 이벤트를 작동하지 못하게 하는 메서드이다. submit을 막음 
+					    	event.preventDefault();          
+					        // Get form         
+					        var form = $('#fileUploadForm')[0];  	    
+					        // Create an FormData object          
+					        var data = new FormData(form);  	   
+					        // disabled the submit button         
+					        $("#btnSubmit").prop("disabled", true);   
+					        
+					        $.ajax({             
+					        	type: "POST",          
+					            enctype: 'multipart/form-data',  
+					            url: "ImgupServelt",        
+					            data: data,          
+					            processData: false,    
+					            contentType: false,      
+					            cache: false,           
+					            timeout: 600000,       
+					            success: function (data) { 
+					            	alert("complete");
+					            	alert(data);
+					            	$("#btnSubmit").prop("disabled", false);
+					            	
+					            	$.ajax({
+					            		type: "POST",
+					            		url: "http://localhost:9000/custom", 
+					            		data: {img_url:data},
+					            		success: function (url) {
+					            			alert("flask complete");
+					            			alert(url);
+					            			$('#custom_img').attr('src',url);
+					            		},
+					            		error: function (e) {
+					            			alert("flask fail");
+					            		}
+					            	});
+					            },          
+					            error: function (e) {  
+					            	console.log("ERROR : ", e);     
+					                $("#btnSubmit").prop("disabled", false);    
+					                alert("fail");      
+					             }     
+					    	});
+					        
+					    }); 
+				    </script>
 </body>
 
 </html>
