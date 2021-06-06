@@ -22,7 +22,7 @@ INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '머그컵3', '�
 
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 앞치마1', '여름 앞치마1', 'attach/summer/apron_1.jpg', 'summer', 'apron');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 앞치마2', '여름 앞치마2', 'attach/summer/apron_2.png', 'summer', 'apron');
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 앞치마3', '여름 앞치마3', 'attach/summer/apron_3.png', 'summer', 'apron');
+
 
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 9000, '[hot]에메랄드 핑크빛 에코백', '에메랄드 바탕의 핑크빛 꽃이 인상깊은 에코백입니다.', 'attach/summer/bag_1.png', 'summer', 'eco');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 7000, '행복기운 식물 에코백 ', '행복기운을 듬뿍담은 식물 에코백입니다.', 'attach/summer/bag_2.png', 'summer', 'eco');
