@@ -46,7 +46,6 @@ CONSTRAINT order_num_pk PRIMARY KEY(o_num),
 CONSTRAINT order_gnum_fk foreign key(g_num) REFERENCES shop_goods(g_num) 
 );
 
-CONSTRAINT order_num_pk PRIMARY KEY(o_num));
 
 CREATE SEQUENCE shop_member_num_seq
 INCREMENT BY 1
@@ -66,6 +65,8 @@ COMMIT;
 
 desc shop_cart;
 SELECT * FROM shop_goods;
+
+select * from shop_goods where g_name like '머그컵2';
 
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_eco/spring_bag_1.jpg', 'spring', 'eco');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 100, '상품명', '상품 설명', 'img/spring_eco/spring_bag_2.png', 'spring', 'eco');

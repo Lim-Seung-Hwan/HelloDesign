@@ -7,20 +7,20 @@ INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '봄 앞치마',
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '앞치마2', '봄 앞치마2', 'attach/spring/apron_2.png', 'spring', 'apron');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '앞치마3', '봄 앞치마3', 'attach/spring/apron_3.png', 'spring', 'apron');
 
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 5000, '[sale]물꽃 에코백', '물 위에 붕붕 뜬 꽃 water collection 에코백입니다. ', 'attach/spring/bag_1.png', 'spring', 'eco');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 5000, '[sale]물꽃 에코백', '물 위에 붕붕 뜬 꽃 water collection 에코백입니다. ', 'attach/spring/bag_1.jpg', 'spring', 'eco');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 9000, '겨울왕국 눈꽃 에코백', '[한정판] 겨울왕국 눈꽃 컬렉션 에코백입니다.', 'attach/spring/bag_2.png', 'spring', 'eco');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 5000, '[sale]금붕어 왈츠 에코백', '마치 금붕어가 왈츠 추듯한 느낌의 water collection 에코백입니다.', 'attach/spring/bag_3.png', 'spring', 'eco');
 
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '의자1', '봄 의자1', 'attach/spring/chair_1.png', 'spring', 'chair');
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '의자2', '봄 의자2', 'attach/spring/chair_2.png', 'spring', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '의자2', '봄 의자2', 'attach/spring/chair_2.jpg', 'spring', 'chair');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '의자3', '봄 의자3', 'attach/spring/chair_3.png', 'spring', 'chair');
 
 
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '머그컵1', '봄 머그컵1', 'attach/spring/cup_1.png', 'spring', 'mug');
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '머그컵2', '봄 머그컵2', 'attach/spring/cup_2.png', 'spring', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '머그컵2', '봄 머그컵2', 'attach/spring/cup_2.jpg', 'spring', 'mug');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '머그컵3', '봄 머그컵3', 'attach/spring/cup_3.png', 'spring', 'mug');
 
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 앞치마1', '여름 앞치마1', 'attach/summer/apron_1.jpg', 'summer', 'apron');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 앞치마1', '여름 앞치마1', 'attach/summer/apron_1.png', 'summer', 'apron');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 앞치마2', '여름 앞치마2', 'attach/summer/apron_2.png', 'summer', 'apron');
 
 
@@ -30,10 +30,10 @@ INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 9000, '[hot]은은한 
 
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 의자1', '여름 의자1', 'attach/summer/chair_1.png', 'summer', 'chair');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 의자2', '여름 의자2', 'attach/summer/chair_2.png', 'summer', 'chair');
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 의자3', '여름 의자3', 'attach/summer/chair_3.png', 'summer', 'chair');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 의자3', '여름 의자3', 'attach/summer/chair_3.jpg', 'summer', 'chair');
 
 
-INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 머그컵1', '여름 머그컵1', 'attach/summer/cup_1.png', 'summer', 'mug');
+INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 머그컵1', '여름 머그컵1', 'attach/summer/cup_1.jpg', 'summer', 'mug');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 머그컵2', '여름 머그컵2', 'attach/summer/cup_2.png', 'summer', 'mug');
 INSERT INTO shop_goods VALUES(shop_goods_num_seq.NEXTVAL, 1000, '여름 머그컵3', '여름 머그컵3', 'attach/summer/cup_3.png', 'summer', 'mug');
 
